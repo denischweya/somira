@@ -5,10 +5,15 @@
  * Frontend styles for the Scroll Video Sections block.
  */
 .wp-block-somira-scroll-video-sections {
-  position: relative;
-  height: 100vh;
+  scroll-behavior: smooth;
+  height: 100%;
   max-height: 1000px;
   overflow-x: hidden;
+  pointer-events: none;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 9999;
 }
 .wp-block-somira-scroll-video-sections .scroll-video-wrapper {
   position: relative;
@@ -41,15 +46,22 @@
   max-width: 600px;
   margin: 0 auto;
 }
+.wp-block-somira-scroll-video-sections .somira-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* often used for full-screen sticky sections */
+  background: #FFF5D9;
+}
 .wp-block-somira-scroll-video-sections .scroll-video-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   max-width: 1400px;
-  max-height: 600px;
+  max-height: 690px;
   margin: 0 auto;
   padding: 0 2rem;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1;
 }
 .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column {
@@ -99,10 +111,9 @@
   position: relative;
 }
 .wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container {
-  position: sticky;
-  top: 0;
+  position: relative;
   height: 100%;
-  max-height: 600px;
+  max-height: 690px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeScrollVideoSection(block) {
     const textSections = block.querySelectorAll('.text-section');
-    const videoSections = block.querySelectorAll('.video-section');
     const videos = block.querySelectorAll('.scroll-video');
-    const stickyContainer = block.querySelector('.sticky-video-container');
     
     if (!textSections.length || !videos.length) {
         console.warn('No sections or videos found in scroll video block');
@@ -35,21 +33,8 @@ function initializeScrollVideoSection(block) {
     // Preload all videos
     preloadVideos(videos);
 
-    // Set up sticky positioning for video container
-    setupStickyVideo(stickyContainer);
-
-    // Set up sticky behavior for entire block
+    // Set up GSAP ScrollTrigger animation (handles all sticky behavior)
     setupStickyBlock(block, textSections);
-
-    // Create scroll animations for each section
-    textSections.forEach((textSection, index) => {
-        const video = videos[index];
-        const videoSection = videoSections[index];
-        
-        if (!video || !videoSection) return;
-
-        createSectionAnimation(textSection, video, videoSection, index, textSections.length);
-    });
 
     // Handle mobile touch optimization
     if (isMobileDevice()) {
@@ -78,48 +63,103 @@ function preloadVideos(videos) {
     });
 }
 
+
 function setupStickyBlock(block, textSections) {
     if (!block || !textSections.length) return;
 
-    let isInAnimationMode = false;
-    let animationProgress = 0;
-    const totalSections = textSections.length;
-    let blockAtTop = false;
+    const scrollVideoContainer = block.querySelector('.scroll-video-container');
+    const videos = block.querySelectorAll('.scroll-video');
+    const videoSections = block.querySelectorAll('.video-section');
+    
+    if (!scrollVideoContainer || !videos.length) return;
 
-    // Monitor when block reaches the top of viewport
-    ScrollTrigger.create({
-        trigger: block,
-        start: "top top",
-        end: "bottom top",
-        onToggle: (self) => {
-            blockAtTop = self.isActive;
-            if (blockAtTop && !isInAnimationMode) {
-                enterAnimationMode();
-            } else if (!blockAtTop && isInAnimationMode) {
-                exitAnimationMode();
+    // Calculate scroll distance for all sections
+    const scrollDistance = textSections.length * window.innerHeight;
+
+    // Create main ScrollTrigger animation
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: scrollVideoContainer,
+            start: "top top",
+            end: `+=${scrollDistance}`,
+            scrub: 1,
+            pin: true,
+            pinSpacing: true,
+            onStart: () => {
+                console.log('GSAP animation started - adding somira-sticky class');
+                scrollVideoContainer.classList.add('somira-sticky');
+            },
+            onUpdate: (self) => {
+                updateVideoAndTextSections(self.progress);
+            },
+            onComplete: () => {
+                console.log('GSAP animation complete - removing somira-sticky class');
+                scrollVideoContainer.classList.remove('somira-sticky');
+            },
+            onReverseComplete: () => {
+                console.log('GSAP animation reversed - removing somira-sticky class');
+                scrollVideoContainer.classList.remove('somira-sticky');
+            },
+            onLeave: () => {
+                console.log('Animation complete - normal scroll resumed');
+                scrollVideoContainer.classList.remove('somira-sticky');
+            },
+            onEnter: () => {
+                console.log('Animation entered - adding somira-sticky class');
+                scrollVideoContainer.classList.add('somira-sticky');
+            },
+            onEnterBack: () => {
+                console.log('Animation entered back - adding somira-sticky class');
+                scrollVideoContainer.classList.add('somira-sticky');
+            },
+            onLeaveBack: () => {
+                console.log('Animation left back - removing somira-sticky class');
+                scrollVideoContainer.classList.remove('somira-sticky');
             }
         }
     });
 
-    function enterAnimationMode() {
-        if (isInAnimationMode) return;
-        console.log('Block reached top:0 - starting animation mode');
-        isInAnimationMode = true;
-        animationProgress = 0;
+    function updateVideoAndTextSections(progress) {
+        const totalSections = textSections.length;
+        const currentSectionIndex = Math.floor(progress * totalSections);
+        const sectionProgress = (progress * totalSections) % 1;
 
-        // Make block fixed at top
-        block.style.position = 'fixed';
-        block.style.top = '0';
-        block.style.left = '0';
-        block.style.width = '100%';
-        block.style.height = '100vh';
-        block.style.zIndex = '1000';
+        // Clamp to valid range
+        const validSectionIndex = Math.min(currentSectionIndex, totalSections - 1);
 
-        // Prevent page scrolling
-        document.body.style.overflow = 'hidden';
+        // Update active text section
+        textSections.forEach((section, index) => {
+            section.classList.toggle('active', index === validSectionIndex);
+        });
 
-        // Initialize video sections - hide all except first
-        const videoSections = block.querySelectorAll('.video-section');
+        // Update video sections
+        videoSections.forEach((videoSection, index) => {
+            if (index === validSectionIndex) {
+                videoSection.style.display = 'block';
+                videoSection.style.opacity = '1';
+                
+                // Update video playback
+                const video = videos[index];
+                if (video && video.duration) {
+                    video.currentTime = Math.min(sectionProgress * video.duration, video.duration - 0.1);
+                }
+            } else {
+                videoSection.style.display = 'none';
+                videoSection.style.opacity = '0';
+            }
+        });
+
+        // Check if we've reached section 3 (data-section-index="3")
+        const currentSection = textSections[validSectionIndex];
+        if (currentSection && currentSection.getAttribute('data-section-index') === '3' && sectionProgress > 0.8) {
+            console.log('Section 3 (Intuitive Smart Controls) reached - animation will complete');
+        }
+
+        console.log(`Progress: ${(progress * 100).toFixed(1)}% - Section: ${validSectionIndex + 1}/${totalSections}`);
+    }
+
+    // Initialize - show first video section
+    if (videoSections.length > 0) {
         videoSections.forEach((videoSection, index) => {
             if (index === 0) {
                 videoSection.style.display = 'block';
@@ -129,94 +169,11 @@ function setupStickyBlock(block, textSections) {
                 videoSection.style.opacity = '0';
             }
         });
-
-        // Initialize text sections - activate first
-        textSections.forEach((section, index) => {
-            section.classList.toggle('active', index === 0);
-        });
-
-        // Listen for scroll events to control animations only
-        window.addEventListener('wheel', handleAnimationScroll, { passive: false });
-        window.addEventListener('touchmove', handleAnimationScroll, { passive: false });
     }
 
-    function handleAnimationScroll(event) {
-        if (!isInAnimationMode) return;
-
-        event.preventDefault();
-        const delta = event.deltaY || (event.touches ? -event.touches[0].clientY : 0);
-        const scrollSpeed = 0.0015;
-
-        // Update animation progress (0-1)
-        animationProgress = Math.max(0, Math.min(1, animationProgress + delta * scrollSpeed));
-
-        const currentSectionIndex = Math.floor(animationProgress * totalSections);
-        const sectionProgress = (animationProgress * totalSections) % 1;
-
-        // Update active text section
-        textSections.forEach((section, index) => {
-            section.classList.toggle('active', index === currentSectionIndex);
-        });
-
-        // Update video sections - show/hide and update playback
-        const videoSections = block.querySelectorAll('.video-section');
-        const videos = block.querySelectorAll('.scroll-video');
-        
-        videoSections.forEach((videoSection, index) => {
-            if (index === currentSectionIndex) {
-                // Show current video section
-                videoSection.style.display = 'block';
-                gsap.to(videoSection, { opacity: 1, duration: 0.3 });
-                
-                // Update video playback
-                const video = videos[index];
-                if (video && video.duration) {
-                    video.currentTime = sectionProgress * video.duration;
-                }
-            } else {
-                // Hide other video sections
-                gsap.to(videoSection, {
-                    opacity: 0,
-                    duration: 0.3,
-                    onComplete: () => {
-                        videoSection.style.display = 'none';
-                    }
-                });
-            }
-        });
-
-        console.log(`Animation progress: ${(animationProgress * 100).toFixed(1)}% - Section: ${currentSectionIndex + 1}/${totalSections}`);
-
-        // Animation complete - exit mode
-        if (animationProgress >= 1) {
-            console.log('Animation complete - resuming normal scroll');
-            exitAnimationMode();
-            
-            // Continue page scroll after a brief delay
-            setTimeout(() => {
-                window.scrollBy(0, 100);
-            }, 100);
-        }
-    }
-
-    function exitAnimationMode() {
-        if (!isInAnimationMode) return;
-        isInAnimationMode = false;
-
-        // Restore block to normal positioning
-        block.style.position = 'relative';
-        block.style.top = 'auto';
-        block.style.left = 'auto';
-        block.style.width = 'auto';
-        block.style.height = 'auto';
-        block.style.zIndex = 'auto';
-
-        // Restore normal page scrolling
-        document.body.style.overflow = 'auto';
-
-        // Remove animation scroll listeners
-        window.removeEventListener('wheel', handleAnimationScroll);
-        window.removeEventListener('touchmove', handleAnimationScroll);
+    // Initialize - activate first text section
+    if (textSections.length > 0) {
+        textSections[0].classList.add('active');
     }
 }
 
