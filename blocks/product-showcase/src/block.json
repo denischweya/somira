@@ -1,0 +1,59 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/product-showcase",
+	"version": "1.0.0",
+	"title": "Product Showcase",
+	"category": "media",
+	"icon": "products",
+	"description": "A complete product showcase with testimonials, pricing, and checkout functionality.",
+	"keywords": ["product", "showcase", "ecommerce", "testimonials", "checkout"],
+	"example": {},
+	"attributes": {
+		"backgroundImage": {
+			"type": "object",
+			"default": null
+		},
+		"productImage": {
+			"type": "object",
+			"default": null
+		},
+		"testimonialImages": {
+			"type": "array",
+			"default": [null, null, null]
+		},
+		"title": {
+			"type": "string",
+			"default": "Somira DeepRelief™ Massager Deluxe"
+		},
+		"priceCurrent": {
+			"type": "string",
+			"default": "$49.99"
+		},
+		"pricePrevious": {
+			"type": "string",
+			"default": "$79.99"
+		},
+		"stripeUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"customerCount": {
+			"type": "string",
+			"default": "1000+"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"textdomain": "somira",
+	"editorScript": "file:../dist/index.js",
+	"editorStyle": "file:../dist/index.css", 
+	"style": "file:../dist/style-index.css",
+	"viewScript": "file:../src/view.js"
+}

@@ -1,0 +1,58 @@
+/**
+ * Editor styles for the Custom Link block.
+ */
+
+.wp-block-somira-custom-link {
+	.custom-link-editor {
+		padding: 1rem;
+		border: 1px dashed #ccc;
+		border-radius: 4px;
+		background: #f9f9f9;
+		
+		.custom-link-container {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			vertical-align: middle;
+			
+			.custom-link-text {
+				display: inline;
+				color: #282828;
+				font-weight: 500;
+				font-size: 16px;
+				vertical-align: middle;
+				
+				&[data-is-placeholder-visible="true"] {
+					color: #999;
+				}
+			}
+			
+			.custom-link-arrow {
+				display: inline-block;
+				vertical-align: middle;
+				width: 16px;
+				height: 8px;
+				flex-shrink: 0;
+				margin-left: 4px;
+				opacity: 0.7;
+				background-image: url('data:image/svg+xml;utf8,<svg width="31" height="12" viewBox="0 0 31 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30.5303 6.53033C30.8232 6.23744 30.8232 5.76256 30.5303 5.46967L25.7574 0.696699C25.4645 0.403806 24.9896 0.403806 24.6967 0.696699C24.4038 0.989593 24.4038 1.46447 24.6967 1.75736L28.9393 6L24.6967 10.2426C24.4038 10.5355 24.4038 11.0104 24.6967 11.3033C24.9896 11.5962 25.4645 11.5962 25.7574 11.3033L30.5303 6.53033ZM0 6V6.75H30V6V5.25H0V6Z" fill="%23282828"/></svg>');
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: center;
+			}
+		}
+		
+		.link-preview-note {
+			margin-top: 0.5rem;
+			font-size: 12px;
+			color: #666;
+			
+			code {
+				background: #fff;
+				padding: 2px 4px;
+				border-radius: 2px;
+				font-size: 11px;
+			}
+		}
+	}
+}

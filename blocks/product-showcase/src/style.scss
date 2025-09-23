@@ -1,0 +1,301 @@
+/**
+ * Frontend styles for the Product Showcase block.
+ */
+
+.wp-block-somira-product-showcase {
+	margin: 2rem 0;
+	margin-block-start: unset !important;
+	margin-top: 141px !important;
+	
+	.product-showcase-wrapper {
+		border-radius: 20px;
+		overflow: hidden;
+
+	}
+	
+	.product-showcase-container {
+		position: relative;
+		z-index: 2;
+		padding: 3rem;
+		
+		@media (max-width: 768px) {
+			padding: 2rem 1.5rem;
+		}
+	}
+	
+	.product-showcase-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+		max-width: 1440px;
+		margin: 0 auto;
+		
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+	}
+	
+	.product-image-column {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		
+		.product-image {
+			max-width: 100%;
+			height: auto;
+			
+		}
+	}
+	
+	.product-details-column {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+	
+	.testimonials-section {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1rem;
+		max-width: 337px;
+		background: #282828;
+		border-radius: 25px;
+		padding: 4px;
+		
+		.testimonial-avatars {
+			display: flex;
+			gap: -0.5rem;
+			
+			.testimonial-avatar {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				overflow: hidden;
+				border: 3px solid #fff;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				margin-left: -8px;
+				
+				&:first-child {
+					margin-left: 0;
+				}
+				
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+		
+		.testimonials-text {
+			font-size: 14px;
+			color: #fff;
+			font-weight: 500;
+		}
+	}
+	
+	.product-title {
+		font-size: 2.5rem;
+		font-weight: 800;
+		line-height: 1.2;
+		margin: 0;
+		color: #202020;
+		
+		@media (max-width: 768px) {
+			font-size: 2rem;
+		}
+	}
+	
+	.pricing-section {
+		display: flex;
+		align-items: center;
+		gap: 39px;
+		margin: 1rem 0;
+		
+		.current-price {
+			font-size: 48px;
+			font-weight: 800;
+			color: #202020;
+		}
+		
+		.previous-price {
+			font-size: 48px;
+			color: #717171;
+			text-decoration: line-through;
+			font-weight: 400;
+		}
+	}
+	
+	.product-form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		background: var(--wp--preset--color--sand);
+		padding: 30px;
+		border-radius: 25px;
+	}
+	
+	.form-row {
+		display: grid;
+		grid-template-columns: 378px 236px;
+		gap: 1.5rem;
+		
+		@media (max-width: 600px) {
+			grid-template-columns: 1fr;
+		}
+	}
+	
+	.form-field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		
+		label {
+			font-size: 14px;
+			font-weight: 600;
+			color: #202020;
+		}
+		
+		.plug-select {
+			padding: 19px 16px;
+			border: 2px solid #e1e5e9;
+			border-radius: 10px;
+			font-size: 14px;
+			background: #fff;
+			transition: border-color 0.3s ease;
+			width: 100%;
+			max-width: 378px;
+			
+			&:focus {
+				outline: none;
+				border-color: #202020;
+			}
+		}
+	}
+	
+	.quantity-controls {
+		display: flex;
+		align-items: center;
+		border: 2px solid #e1e5e9;
+		border-radius: 10px;
+		background: #fff;
+		overflow: hidden;
+		
+		.quantity-btn {
+			background: none;
+			border: none;
+			padding: 19px 16px;
+			font-size: 18px;
+			font-weight: 600;
+			color: #202020;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			
+			
+			&:hover {
+				background: #f8f9fa;
+			}
+			
+			&:active {
+				background: #e9ecef;
+			}
+		}
+		.quantity-decrease {
+			border-right: 2px solid #eee;
+		}
+		.quantity-increase {
+			border-left: 2px solid #eee;
+		}
+		.quantity-input {
+			border: none;
+			padding: 12px 16px;
+			text-align: center;
+			font-size: 14px;
+			font-weight: 600;
+			min-width: 60px;
+			background: none;
+			
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+	
+	.checkout-buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+		margin-top: 1rem;
+		width: 100%;
+	}
+	
+	.checkout-btn {
+		background: #202020;
+		color: #fff;
+		border: none;
+		padding: 16px 24px;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		max-width: 378px;
+		width: 100%;
+		
+		&:hover {
+			background: #2a2a2a;
+			transform: translateY(-1px);
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+		
+		&:disabled {
+			background: #ccc;
+			cursor: not-allowed;
+			transform: none;
+		}
+	}
+	
+	.apple-pay-btn {
+		background: #000;
+		color: #fff;
+		border: none;
+		padding: 16px 24px;
+		border-radius: 8px;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		max-width: 236px;
+		width: 100%;
+		
+		&:hover {
+			background: #1a1a1a;
+			transform: translateY(-1px);
+		}
+		
+		&:active {
+			transform: translateY(0);
+		}
+		
+		&:disabled {
+			background: #ccc;
+			cursor: not-allowed;
+			transform: none;
+		}
+		
+		.apple-pay-logo {
+			display: flex;
+			align-items: center;
+		}
+	}
+}

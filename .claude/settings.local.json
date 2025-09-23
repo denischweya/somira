@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "mcp__figma-dev-mode-mcp-server__get_code",
+      "mcp__figma-dev-mode-mcp-server__get_screenshot",
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(cd:*)",
+      "Bash(cd:*)",
+      "WebFetch(domain:developer.wordpress.org)",
+      "Bash(cd:*)",
+      "Bash(cd:*)",
+      "Bash(cd:*)",
+      "Bash(true)",
+      "Bash(npx @wordpress/create-block:*)",
+      "Bash(cd:*)",
+      "Bash(cd:*)",
+      "Bash(npm install)",
+      "Bash(cp:*)",
+      "Bash(npm run build:carousel:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:hero:*)",
+      "WebFetch(domain:unpkg.com)",
+      "Bash(curl:*)",
+      "Bash(npm run build:cta:*)",
+      "Bash(npm run build:scroll-video-sections:*)"
+    ],
+    "deny": []
+  }
+}

@@ -1,0 +1,262 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../node_modules/@wordpress/scripts/node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/scroll-video-sections/src/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Frontend styles for the Scroll Video Sections block.
+ */
+.wp-block-somira-scroll-video-sections {
+  position: relative;
+  height: 100vh;
+  max-height: 1000px;
+  overflow-x: hidden;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 1000px;
+  background-image: url(images/block-bg.f22eb5d8.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-header {
+  text-align: center;
+  padding: 4rem 2rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-header .scroll-video-title {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 1rem 0;
+  color: #202020;
+  letter-spacing: -0.02em;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-header .scroll-video-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  line-height: 1.4;
+  margin: 0;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1400px;
+  max-height: 600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section {
+  padding: 15px 30px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section.active {
+  background-color: #fff;
+  border-left: 8px solid #C8AE99;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section.active .section-content {
+  transform: translateX(0);
+  opacity: 1;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content {
+  transition: all 0.4s ease;
+  transform: translateX(0);
+  opacity: 1;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content .section-title {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 0.5rem 0;
+  color: #202020;
+  letter-spacing: -0.01em;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content .section-text {
+  font-size: clamp(0.9rem, 2vw, 20px);
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  color: #666;
+  max-width: 100%;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column {
+  position: relative;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  max-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #000;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container .video-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container .video-section .scroll-video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 16px;
+  background: #000;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container .video-section .video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 16px;
+  border: 2px dashed #ccc;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container .video-section .video-placeholder p {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+.wp-block-somira-scroll-video-sections .scroll-spacer {
+  width: 100%;
+  pointer-events: none;
+}
+@media (max-width: 1024px) {
+  .wp-block-somira-scroll-video-sections .scroll-video-container {
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-header {
+    padding: 3rem 1rem 4rem;
+  }
+}
+@media (max-width: 768px) {
+  .wp-block-somira-scroll-video-sections .scroll-video-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column {
+    order: 2;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section {
+    min-height: 80vh;
+    padding: 2rem 0;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section::before {
+    left: -1rem;
+    right: -1rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content {
+    padding: 1.5rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content .section-title {
+    margin-bottom: 1rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content .section-text {
+    max-width: 100%;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column {
+    order: 1;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container {
+    position: relative;
+    height: 60vh;
+    margin-bottom: 2rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-header {
+    padding: 2rem 1rem 3rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-spacer {
+    height: auto !important;
+  }
+}
+@media (max-width: 480px) {
+  .wp-block-somira-scroll-video-sections .scroll-video-header {
+    padding: 1.5rem 1rem 2rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container {
+    padding: 0 0.5rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .text-sections-column .text-section .section-content {
+    padding: 1rem;
+  }
+  .wp-block-somira-scroll-video-sections .scroll-video-container .video-sections-column .sticky-video-container {
+    height: 50vh;
+    border-radius: 12px;
+  }
+}
+.wp-block-somira-scroll-video-sections.mobile-optimized .scroll-video {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+.wp-block-somira-scroll-video-sections.mobile-optimized .text-section {
+  will-change: transform, opacity;
+}
+.wp-block-somira-scroll-video-sections.mobile-optimized .text-section.active {
+  will-change: auto;
+}
+.wp-block-somira-scroll-video-sections .scroll-video:not([src]) {
+  background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  animation: loading-shimmer 1s linear infinite;
+}
+@keyframes loading-shimmer {
+  0% {
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  }
+  100% {
+    background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px;
+  }
+}
+@media (prefers-contrast: high) {
+  .wp-block-somira-scroll-video-sections .text-section.active::before {
+    background: rgb(255, 255, 255);
+    border: 2px solid #000;
+  }
+  .wp-block-somira-scroll-video-sections .section-title {
+    color: #000;
+  }
+  .wp-block-somira-scroll-video-sections .section-text {
+    color: #000;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wp-block-somira-scroll-video-sections .text-section,
+  .wp-block-somira-scroll-video-sections .section-content,
+  .wp-block-somira-scroll-video-sections .video-section {
+    transition: none;
+  }
+  .wp-block-somira-scroll-video-sections .text-section.active .section-content {
+    transform: none;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/

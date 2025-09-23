@@ -1,0 +1,312 @@
+/*
+Theme Name: Somira
+Theme URI: https://somira.com/
+Author: Denis Bosire
+Author URI: https://www.toptal.com/resume/denis-bosire
+Description: Somira emphasizes simplicity and adaptability. It offers flexible design options, supported by a variety of patterns for different page types, such as services and landing pages, making it ideal for building personal blogs, professional portfolios, online magazines, or business websites. Its templates cater to various blog styles, from text-focused to image-heavy layouts. Additionally, it supports international typography and diverse color palettes, ensuring accessibility and customization for users worldwide.
+Requires at least: 6.7
+Tested up to: 6.8
+Requires PHP: 7.2
+Version: 1.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: somira
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, style-variations, accessibility-ready, blog, portfolio, news
+*/
+
+/*
+ * Link styles
+ * https://github.com/WordPress/gutenberg/issues/42319
+ */
+a {
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: .1em;
+}
+
+/* Focus styles */
+:where(.wp-site-blocks *:focus) {
+	outline-width: 2px;
+	outline-style: solid;
+}
+
+/* Increase the bottom margin on submenus, so that the outline is visible. */
+.wp-block-navigation .wp-block-navigation-submenu .wp-block-navigation-item:not(:last-child) {
+	margin-bottom: 3px;
+}
+
+/* Increase the outline offset on the parent menu items, so that the outline does not touch the text. */
+.wp-block-navigation .wp-block-navigation-item .wp-block-navigation-item__content {
+	outline-offset: 4px;
+}
+
+/* Remove outline offset from the submenus, otherwise the outline is visible outside the submenu container. */
+.wp-block-navigation .wp-block-navigation-item ul.wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+	outline-offset: 0;
+}
+
+/*
+ * Progressive enhancement to reduce widows and orphans
+ * https://github.com/WordPress/gutenberg/issues/55190
+ */
+h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
+	text-wrap: pretty;
+}
+
+/*
+ * Change the position of the more block on the front, by making it a block level element.
+ * https://github.com/WordPress/gutenberg/issues/65934
+*/
+.more-link {
+	display: block;
+}
+
+/*
+ * Enhanced Manrope font variations and utilities
+ */
+.font-light {
+	font-weight: 300;
+}
+
+.font-normal {
+	font-weight: 400;
+}
+
+.font-medium {
+	font-weight: 500;
+}
+
+.font-semibold {
+	font-weight: 600;
+}
+
+.font-bold {
+	font-weight: 700;
+}
+
+.font-extrabold {
+	font-weight: 800;
+}
+
+/* Typography utilities */
+.text-balance {
+	text-wrap: balance;
+}
+
+.tracking-tight {
+	letter-spacing: -0.025em;
+}
+
+.tracking-normal {
+	letter-spacing: 0;
+}
+
+.tracking-wide {
+	letter-spacing: 0.025em;
+}
+
+/* Font smoothing for better rendering */
+body,
+.wp-site-blocks {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced readability */
+p, 
+.wp-block-paragraph {
+	text-rendering: optimizeLegibility;
+}
+
+.expert-video {
+	max-height: 700px;
+	object-fit: contain;
+	position: relative;
+}
+.expert-video video {
+    height: 500px;
+    max-height: 700px;
+    width: 100%;
+    object-fit: cover;
+}
+.expert-video video:not(.playing) {
+    cursor: pointer;
+}
+.expert-video video:not(.playing)::-webkit-media-controls-panel {
+    display: none !important;
+}
+.expert-video video:not(.playing)::-webkit-media-controls {
+    display: none !important;
+}
+
+/* Custom play button */
+.expert-video .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.expert-video .play-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+.expert-video .play-button::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+}
+.expert-video.playing .play-button {
+    display: none;
+}
+.content-align-center {
+	align-content: center;
+}
+.entry-content:has(.hero) {
+	margin-top: 0;
+  }
+.wp-block-latest-posts__post-title {
+	text-decoration: none;
+	font-size: 24px;
+	line-height: 33px;
+	font-weight: 700;
+
+}
+.wp-block-latest-posts__post-title:hover {
+	text-decoration: underline
+}
+.wp-block-latest-posts__featured-image {
+	border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Read More Blogs link with arrow icon */
+.read-more {
+	font-weight: 700;
+}
+.read-more a::after {
+	content: '';
+	display: inline-block;
+	width: 31px;
+	height: 12px;
+	margin-left: 8px;
+	background-image: url('data:image/svg+xml;utf8,<svg width="31" height="12" viewBox="0 0 31 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30.5303 6.53033C30.8232 6.23744 30.8232 5.76256 30.5303 5.46967L25.7574 0.696699C25.4645 0.403806 24.9896 0.403806 24.6967 0.696699C24.4038 0.989593 24.4038 1.46447 24.6967 1.75736L28.9393 6L24.6967 10.2426C24.4038 10.5355 24.4038 11.0104 24.6967 11.3033C24.9896 11.5962 25.4645 11.5962 25.7574 11.3033L30.5303 6.53033ZM0 6V6.75H30V6V5.25H0V6Z" fill="%23282828"/></svg>');
+	background-repeat: no-repeat;
+	background-size: contain;
+	vertical-align: middle;
+}
+.data-driven {
+	border-radius: 20px;
+}
+.data-driven .sub-heading {
+	max-width: 600px;
+	margin-bottom: 2rem;
+}
+.data-driven .wp-block-columns {
+	border-bottom: 1px solid #fff;
+}
+.data-driven .wp-block-columns .wp-block-column {
+	border-right: 1px solid #fff;
+	padding-bottom: 50px;
+}
+.data-driven .who-row {
+	margin-bottom: 1rem;
+}
+.data-driven .who-footer {
+	background: #fff;
+	max-width: 100%;
+}
+.data-driven .wp-block-image {
+	display: flex;
+}
+.logos {
+	background-color: #fff;
+	margin-top:0;
+}
+.logos .wp-block-column {
+	max-width: 190px;
+}
+.logos .wp-block-columns {
+	justify-content: center;
+}
+.wp-block-column.expert-video.is-layout-flow.wp-block-column-is-layout-flow {
+    border-radius: 20px;
+    overflow: hidden;
+}
+footer {
+	background-color: var(--wp--preset--color--night);
+	margin-top: 0;
+	margin-block-start: 0 !important;
+}
+footer .wp-block-group {
+	max-width: 1440px;
+	width: 100%;
+	margin: 0 auto;
+}
+footer input.wpcf7-form-control.wpcf7-email.wpcf7-validates-as-required.wpcf7-text.wpcf7-validates-as-email {
+    padding: 1rem;
+    border-radius: 8px;
+    background: #EBEBEB;
+    border: none;
+    color: #717171;
+    font-size: 1rem;
+}
+footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
+    border: 2px solid var(--wp--preset--color--sand);
+    padding: 16px 28px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    background: var(--wp--preset--color--night);
+    color: var(--wp--preset--color--sand);
+}
+.wp-block-contact-form-7-contact-form-selector {
+    overflow: hidden;
+}
+@media (max-width:768px){
+	.features,
+	.testimonial,
+	.data-driven,
+	.blog {
+		padding: 16px;
+	}
+	.data-driven .wp-block-column {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		align-items: center;
+	}
+	.blog {
+		padding: 16;
+	}
+	.wp-block-somira-cta .cta-container .cta-content .cta-description {
+		padding: 16px;
+	}
+	footer .wp-block-column {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	footer .wp-block-group {
+		width: auto;
+	}
+	footer figure.wp-block-gallery.has-nested-images.columns-5.wp-block-gallery-1.is-layout-flex.wp-block-gallery-is-layout-flex {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		padding: 0 16px;
+	}
+}

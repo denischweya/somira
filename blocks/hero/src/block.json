@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/hero",
+	"version": "1.0.0",
+	"title": "Hero",
+	"category": "design",
+	"icon": "cover-image",
+	"description": "A hero section with video background and content overlay.",
+	"keywords": ["hero", "video", "banner", "header"],
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"videoUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"videoId": {
+			"type": "number",
+			"default": 0
+		},
+		"title": {
+			"type": "string",
+			"default": "Hero Title"
+		},
+		"content": {
+			"type": "string",
+			"default": "Hero description text goes here."
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Learn More"
+		},
+		"buttonUrl": {
+			"type": "string",
+			"default": "#"
+		}
+	},
+	"textdomain": "somira",
+	"editorScript": "file:../dist/index.js",
+	"editorStyle": "file:../dist/index.css", 
+	"style": "file:../dist/style-index.css",
+	"viewScript": "file:../dist/view.js"
+}

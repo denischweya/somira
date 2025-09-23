@@ -1,0 +1,55 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/cta",
+	"version": "1.0.0",
+	"title": "CTA",
+	"category": "design",
+	"icon": "megaphone",
+	"description": "A call-to-action block with title, description, link and image.",
+	"keywords": ["cta", "call to action", "button", "link"],
+	"example": {},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Ready to get started?"
+		},
+		"description": {
+			"type": "string",
+			"default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		},
+		"linkText": {
+			"type": "string",
+			"default": "Get Started"
+		},
+		"linkUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageId": {
+			"type": "number",
+			"default": 0
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"textdomain": "somira",
+	"editorScript": "file:../dist/index.js",
+	"editorStyle": "file:../dist/index.css", 
+	"style": "file:../dist/style-index.css",
+	"viewScript": "file:../src/view.js"
+}

@@ -1,0 +1,67 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/scroll-video-sections",
+	"version": "1.0.0",
+	"title": "Scroll Video Sections",
+	"category": "layout",
+	"icon": "format-video",
+	"description": "A two-column scroll animation block with text sections on the left and scroll-controlled MP4 videos on the right.",
+	"keywords": ["scroll", "video", "animation", "sections", "gsap"],
+	"example": {},
+	"attributes": {
+		"blockTitle": {
+			"type": "string",
+			"default": "Different By Design"
+		},
+		"blockSubtitle": {
+			"type": "string",
+			"default": "Experience the innovation behind our products"
+		},
+		"sections": {
+			"type": "array",
+			"default": [
+				{
+					"id": 1,
+					"title": "Section 1",
+					"text": "This is the first section content that will be highlighted as the video plays.",
+					"videoUrl": ""
+				},
+				{
+					"id": 2,
+					"title": "Section 2", 
+					"text": "This is the second section content with its corresponding video.",
+					"videoUrl": ""
+				},
+				{
+					"id": 3,
+					"title": "Section 3",
+					"text": "This is the third section content.",
+					"videoUrl": ""
+				},
+				{
+					"id": 4,
+					"title": "Section 4",
+					"text": "This is the fourth and final section content.",
+					"videoUrl": ""
+				}
+			],
+			"items": {
+				"type": "object"
+			}
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"textdomain": "somira",
+	"editorScript": "file:./dist/index.js",
+	"editorStyle": "file:./dist/index.css",
+	"style": "file:./dist/style-index.css",
+	"viewScript": "file:./src/view.js"
+}

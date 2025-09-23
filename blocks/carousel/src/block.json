@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/carousel",
+	"version": "1.0.0",
+	"title": "Video Carousel",
+	"category": "media",
+	"icon": "video-alt3",
+	"description": "A video carousel with star rating and title display using Flickity.",
+	"keywords": ["carousel", "video", "testimonials", "reviews"],
+	"example": {},
+	"attributes": {
+		"eyebrow": {
+			"type": "string",
+			"default": "Rated 4.8/5 by thousands of customers"
+		},
+		"title": {
+			"type": "string",
+			"default": "Customer Reviews"
+		},
+		"videos": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"textdomain": "somira",
+	"editorScript": "file:../dist/index.js",
+	"editorStyle": "file:../dist/index.css", 
+	"style": "file:../dist/style-index.css",
+	"viewScript": "file:../src/view.js"
+}

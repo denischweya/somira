@@ -1,0 +1,233 @@
+/**
+ * Editor styles for the Scroll Video Sections block.
+ */
+
+.wp-block-somira-scroll-video-sections {
+	.scroll-video-editor {
+		padding: 2rem;
+		border: 2px dashed #ccc;
+		border-radius: 12px;
+		background: #fafafa;
+		
+		.editor-header {
+			text-align: center;
+			margin-bottom: 3rem;
+			padding-bottom: 2rem;
+			border-bottom: 1px solid #ddd;
+			
+			.block-title {
+				font-size: 2.5rem;
+				font-weight: 800;
+				margin: 0 0 1rem 0;
+				color: #202020;
+				
+				&[data-is-placeholder-visible="true"] {
+					color: #999;
+				}
+			}
+			
+			.block-subtitle {
+				font-size: 1.2rem;
+				margin: 0;
+				color: #666;
+				
+				&[data-is-placeholder-visible="true"] {
+					color: #999;
+				}
+			}
+		}
+		
+		.editor-preview {
+			.components-placeholder {
+				border: 1px dashed #ddd;
+				background: #fff;
+				border-radius: 8px;
+				padding: 3rem;
+				text-align: center;
+			}
+			
+			.sections-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 2rem;
+				
+				h3 {
+					font-size: 1.2rem;
+					font-weight: 600;
+					margin: 0 0 1rem 0;
+					color: #202020;
+					text-align: center;
+					padding-bottom: 0.5rem;
+					border-bottom: 2px solid #e0e0e0;
+				}
+				
+				.sections-column {
+					.section-preview {
+						transition: all 0.3s ease;
+						
+						&:hover {
+							transform: translateY(-2px);
+							box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+						}
+						
+						&.active {
+							border-color: #007cba !important;
+							background-color: #e3f2fd !important;
+						}
+						
+						h4 {
+							color: #202020;
+							font-weight: 600;
+						}
+						
+						p {
+							line-height: 1.5;
+						}
+					}
+				}
+				
+				.videos-column {
+					.video-preview {
+						transition: all 0.3s ease;
+						
+						&:hover {
+							transform: translateY(-2px);
+							box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+						}
+						
+						video {
+							display: block;
+							border-radius: 4px;
+						}
+						
+						div {
+							font-style: italic;
+						}
+					}
+				}
+				
+				@media (max-width: 768px) {
+					grid-template-columns: 1fr;
+					gap: 1.5rem;
+				}
+			}
+		}
+	}
+	
+	// Inspector controls styling
+	.components-panel__body {
+		.components-card {
+			transition: all 0.3s ease;
+			
+			&:hover {
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			}
+			
+			.components-card__header h4 {
+				font-weight: 600;
+				color: #202020;
+			}
+			
+			.components-card__body {
+				.components-text-control__input {
+					border-radius: 4px;
+					border: 1px solid #ddd;
+					transition: border-color 0.2s ease;
+					
+					&:focus {
+						border-color: #007cba;
+						box-shadow: 0 0 0 1px #007cba;
+					}
+				}
+				
+				.components-button {
+					border-radius: 4px;
+					transition: all 0.2s ease;
+					
+					&.is-primary {
+						background: #007cba;
+						border-color: #007cba;
+						
+						&:hover {
+							background: #005a87;
+							border-color: #005a87;
+						}
+					}
+					
+					&.is-secondary {
+						border: 1px solid #007cba;
+						color: #007cba;
+						
+						&:hover {
+							background: #007cba;
+							color: white;
+						}
+					}
+					
+					&.is-destructive {
+						color: #cc1818;
+						border-color: #cc1818;
+						
+						&:hover {
+							background: #cc1818;
+							color: white;
+						}
+					}
+				}
+				
+				small {
+					color: #666;
+					font-size: 0.85rem;
+				}
+			}
+		}
+	}
+	
+	// Loading states for editor
+	.editor-loading {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		font-style: italic;
+		color: #666;
+		
+		&::before {
+			content: '';
+			width: 20px;
+			height: 20px;
+			border: 2px solid #ddd;
+			border-top: 2px solid #007cba;
+			border-radius: 50%;
+			animation: editor-spin 1s linear infinite;
+			margin-right: 0.5rem;
+		}
+	}
+	
+	@keyframes editor-spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+	
+	// Error states
+	.editor-error {
+		padding: 1rem;
+		background: #fee;
+		border: 1px solid #fcc;
+		border-radius: 4px;
+		color: #c33;
+		font-size: 0.9rem;
+		margin: 1rem 0;
+	}
+	
+	// Success states  
+	.editor-success {
+		padding: 1rem;
+		background: #efe;
+		border: 1px solid #cfc;
+		border-radius: 4px;
+		color: #363;
+		font-size: 0.9rem;
+		margin: 1rem 0;
+	}
+}
