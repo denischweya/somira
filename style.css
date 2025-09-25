@@ -18,7 +18,7 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
  * Link styles
  * https://github.com/WordPress/gutenberg/issues/42319
  */
-a {
+ a {
 	text-decoration-thickness: 1px !important;
 	text-underline-offset: .1em;
 }
@@ -103,7 +103,9 @@ h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
 .tracking-wide {
 	letter-spacing: 0.025em;
 }
-
+body {
+	background-color: #F8F8F4;
+}
 /* Font smoothing for better rendering */
 body,
 .wp-site-blocks {
@@ -171,6 +173,19 @@ p,
 .expert-video.playing .play-button {
     display: none;
 }
+.expert figure.wp-block-image.size-full.is-resized {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.expert .expert-small {
+	gap:24px !important;
+}
+.expert .expert-left-column .expert-testimonial {
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 40px;
+	margin-bottom: 39px;
+}
 .content-align-center {
 	align-content: center;
 }
@@ -220,6 +235,7 @@ p,
 .data-driven .wp-block-columns .wp-block-column {
 	border-right: 1px solid #fff;
 	padding-bottom: 50px;
+	padding-right: 20px;
 }
 .data-driven .who-row {
 	margin-bottom: 1rem;
@@ -227,7 +243,7 @@ p,
 .data-driven .who-footer {
 	background: #fff;
 	max-width: 100%;
-}
+} 
 .data-driven .wp-block-image {
 	display: flex;
 }
@@ -240,6 +256,9 @@ p,
 }
 .logos .wp-block-columns {
 	justify-content: center;
+} 
+.logos .wp-block-columns img {
+	opacity: 0.65;
 }
 .wp-block-column.expert-video.is-layout-flow.wp-block-column-is-layout-flow {
     border-radius: 20px;
@@ -273,14 +292,23 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
     color: var(--wp--preset--color--sand);
 }
 .wp-block-contact-form-7-contact-form-selector {
-    overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
 }
+
 @media (max-width:768px){
 	.features,
 	.testimonial,
 	.data-driven,
 	.blog {
 		padding: 16px;
+	}
+	.logos .wp-block-columns {
+		flex-wrap: nowrap !important;
+	}
+	.features {
+		display: none;
 	}
 	.data-driven .wp-block-column {
 		text-align: center;
@@ -310,3 +338,150 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
 		padding: 0 16px;
 	}
 }
+
+/* Custom Search Form Styles */
+.custom-search {
+    max-width: 1270px;
+	width: 100%;
+    margin: 20px auto;
+}
+
+.custom-search form {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    height: 100px;
+    padding-right: 20px;
+}
+
+.custom-search input[type="search"] {
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;
+    color: #333;
+    height: 100%;
+}
+
+.custom-search button {
+    background: #000;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+    height: 60px;
+}
+
+.custom-search button:hover {
+    background: #333;
+}
+
+.custom-search button svg {
+    width: 32px;
+    height: 32px;
+    fill: currentColor;
+}
+
+/* POPUP */
+.hustle-popup-content {
+	max-width: 1200px !important;
+}
+.hustle-layout .hustle-title {
+	font-size: 48px !important;
+	line-height: 60px !important;
+	color: #282828 !important;
+	font-weight: 800 !important;
+	font-family: var(--wp--preset--font-family--manrope) !important;
+	max-width: 280px !important;
+}
+.hustle-group-content ul li {
+	color:  #282828;
+	font-family: var(--wp--preset--font-family--manrope) !important;
+	font-size: 20px !important;
+	font-style: normal;
+	font-weight: 400 !important;
+	line-height: 26px !important; /* 130% */
+	margin-bottom: 2rem !important;
+}
+.hustle-group-content ul li:last-child {
+	margin-bottom: 0rem !important;
+}
+.hustle-layout-content .hustle-content {
+
+	margin-bottom: 0 !important;
+}
+
+.custom-icon-list {
+	list-style: none !important;
+	padding-left: 0 !important;
+	margin: 0 !important;
+  }
+  
+  .custom-icon-list li {
+	position: relative !important;
+	padding-left: 36px !important; /* space for the icon */
+	margin-bottom: 12px !important;
+	line-height: 1.4 !important;
+  }
+  
+  /* First item icon */
+  .custom-icon-list li:nth-child(1)::before {
+	content: "" !important;
+	position: absolute !important;
+	left: 0 !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	width: 24px !important;
+	height: 24px !important;
+	background: url("http://somira.co/wp-content/uploads/2025/09/editor_choice.svg") no-repeat center/contain !important;
+  }
+  
+  /* Second item icon */
+  .custom-icon-list li:nth-child(2)::before {
+	content: "" !important;
+	position: absolute !important;
+	left: 0 !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	width: 24px !important;
+	height: 24px !important;
+	background: url("http://somira.co/wp-content/uploads/2025/09/carry_on_bag.svg") no-repeat center/contain !important
+  }
+  
+  /* Third item icon */
+  .custom-icon-list li:nth-child(3)::before {
+	content: "" !important;
+	position: absolute !important;
+	left: 0 !important;
+	top: 50% !important;
+	transform: translateY(-50%) !important;
+	width: 24px !important;
+	height: 24px !important;
+	background: url("http://somira.co/wp-content/uploads/2025/09/recenter.svg") no-repeat center/contain !important;
+  }
+  
+  span.custom-link-prefix {
+      display: inline;
+      font-size: 24px;
+      /* text-decoration: underline; */
+      vertical-align: middle;
+}
+.scroll-video-wrapper { overflow:hidden;}
+.data-driven {
+	max-width: 1530px;
+	width: 100%;
+	padding-left: 54px;
+	padding-right: 54px;
+}
+.data-driven .wp-block-columns .wp-block-column:last-of-type { border: none; }

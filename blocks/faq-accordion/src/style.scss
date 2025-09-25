@@ -1,0 +1,308 @@
+/**
+ * Frontend styles for the FAQ Accordion block.
+ */
+
+.wp-block-somira-faq-accordion {
+	margin: 2rem 0;
+	max-width: 1530px !important;
+	margin-inline: auto;
+	background-color: #F8F8F4;
+	
+	&.hide-desktop {
+		@media (min-width: 769px) {
+			display: none !important;
+		}
+	}
+	
+	&.hide-mobile {
+		@media (max-width: 768px) {
+			display: none !important;
+		}
+	}
+	
+	.faq-accordion {
+		max-width: 100%;
+
+		@media (max-width: 768px) {
+			padding:20px;
+		}
+		.faq-heading {
+			font-size: 48px;
+			font-weight: 800;
+			margin: 0 0 2rem 0;
+			line-height: 1.2;
+			color: #333;
+			text-align: center;
+			
+			@media (max-width: 768px) {
+				font-size: 24px;
+				font-weight: 700;
+			}
+		}
+		
+		.faq-item {
+			border-top: 1px solid #E3DBD8;
+			background: transparent;
+			overflow: hidden;
+			transition: all 0.3s ease;
+			
+	
+			&:hover {
+				border-color: #E3DBD8;
+		
+			}
+			
+			&.active {
+				border-color: #E3DBD8;
+			
+			}
+			
+			.faq-button {
+				width: 100%;
+				background: transparent;
+				border: none;
+				padding: 1.5rem;
+				text-align: left;
+				cursor: pointer;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				transition: background-color 0.3s ease;
+				font-family: inherit;
+				
+				@media (max-width: 768px) {
+					padding: 1.25rem;
+				}
+				
+				&:hover {
+					background-color:transparent;
+				}
+				
+				&:focus {
+					outline: 2px solid #E3DBD8;
+					outline-offset: -2px;
+				}
+				
+				&[aria-expanded="true"] {
+					
+					
+				}
+				
+				.faq-title-wrapper {
+					display: flex;
+					align-items: center;
+					gap: 0.75rem;
+					flex: 1;
+					
+					.faq-title-icon {
+						width: 24px;
+						height: 24px;
+						object-fit: contain;
+						flex-shrink: 0;
+					}
+					
+					.faq-title {
+						font-size: 1.125rem;
+						font-weight: 600;
+						color: #333;
+						line-height: 1.4;
+						
+						@media (max-width: 768px) {
+							font-size: 1rem;
+						}
+					}
+				}
+				
+				.faq-toggle-icon {
+					flex-shrink: 0;
+					margin-left: 1rem;
+					transition: transform 0.3s ease;
+					
+					@media (max-width: 768px) {
+						margin-left: 0.75rem;
+					}
+					
+					.faq-plus-minus-icon {
+						font-size: 1.5rem;
+						font-weight: 300;
+						color: #666;
+						line-height: 1;
+						display: inline-block;
+						width: 24px;
+						text-align: center;
+					}
+					
+					.faq-arrow-icon {
+						transition: transform 0.3s ease;
+						
+						path {
+							transition: fill 0.3s ease;
+						}
+					}
+					
+					&[data-icon-type="arrow"] {
+						.faq-arrow-icon {
+							transform: rotate(0deg);
+						}
+					}
+				}
+				
+				&[aria-expanded="true"] {
+					.faq-toggle-icon {
+						&[data-icon-type="plusminus"] {
+							.faq-plus-minus-icon::after {
+								content: "";
+							}
+							.faq-plus-minus-icon::before {
+								content: "";
+							}
+						}
+						
+						&[data-icon-type="arrow"] {
+							.faq-arrow-icon {
+								transform: rotate(180deg);
+							}
+						}
+					}
+				}
+			}
+			
+			.faq-content {
+				background: transparent;
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.4s ease, padding 0.4s ease;
+				
+				&:not([hidden]) {
+					max-height: 1000px;
+				}
+				
+				.faq-content-inner {
+					padding: 1.5rem;
+					
+					@media (max-width: 768px) {
+						padding: 1.25rem;
+					}
+					
+					p {
+						margin: 0 0 1rem 0;
+						font-size: 1rem;
+						line-height: 1.6;
+						color: #555;
+						
+						&:last-child {
+							margin-bottom: 0;
+						}
+						
+						@media (max-width: 768px) {
+							font-size: 0.9rem;
+						}
+					}
+					
+					ul, ol {
+						margin: 0 0 1rem 0;
+						padding-left: 1.5rem;
+						
+						&:last-child {
+							margin-bottom: 0;
+						}
+						
+						li {
+							margin-bottom: 0.5rem;
+							line-height: 1.6;
+							color: #555;
+							
+							&:last-child {
+								margin-bottom: 0;
+							}
+						}
+					}
+					
+					strong {
+						color: #333;
+					}
+					
+					a {
+						color: #fff;
+						text-decoration: underline;
+						
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Editor specific styles
+.wp-block-somira-faq-accordion {
+	.faq-accordion-editor {
+		.faq-heading {
+			font-size: 2.5rem;
+			font-weight: 800;
+			margin: 0 0 2rem 0;
+			line-height: 1.2;
+			color: #333;
+			text-align: center;
+			
+			&:focus {
+				outline: 2px solid #E3DBD8;
+				outline-offset: 2px;
+			}
+		}
+		
+		.faq-item-editor {
+			margin-bottom: 1.5rem;
+			
+			.faq-button-preview {
+				&:hover {
+					background-color: #f0f0f0 !important;
+				}
+			}
+			
+			.faq-content-editor {
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				padding: 12px;
+				min-height: 80px;
+				background: #fff;
+				
+				&:focus {
+					outline: 2px solid #007cba;
+					outline-offset: -2px;
+				}
+				
+				p {
+					margin: 0 0 1em 0;
+					
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+			}
+			
+			.wp-block-freeform {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// Animation keyframes
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Smooth content reveal animation
+.faq-item.active .faq-content {
+	animation: fadeIn 0.3s ease;
+}

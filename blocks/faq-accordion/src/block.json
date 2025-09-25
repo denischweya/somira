@@ -1,0 +1,58 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/faq-accordion",
+	"version": "0.1.0",
+	"title": "FAQ Accordion",
+	"category": "widgets",
+	"icon": "editor-help",
+	"description": "A responsive FAQ accordion block with customizable icons and visibility options.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"textdomain": "somira",
+	"editorScript": "file:../dist/index.js",
+	"editorStyle": "file:../dist/index.css",
+	"style": "file:../dist/style-index.css",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"default": "Frequently Asked Questions"
+		},
+		"faqItems": {
+			"type": "array",
+			"default": [
+				{
+					"title": "How does it work?",
+					"content": "Our original creation uses advanced DeepRelief™ technology to provide effective results.",
+					"iconUrl": "",
+					"iconId": 0,
+					"iconAlt": ""
+				},
+				{
+					"title": "Is it safe to use daily?",
+					"content": "Yes, it is safe to use daily. Our product has been thoroughly tested for everyday use.",
+					"iconUrl": "",
+					"iconId": 0,
+					"iconAlt": ""
+				}
+			]
+		},
+		"toggleIconType": {
+			"type": "string",
+			"default": "plusminus",
+			"enum": ["plusminus", "arrow"]
+		},
+		"hideOnDesktop": {
+			"type": "boolean",
+			"default": false
+		},
+		"hideOnMobile": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

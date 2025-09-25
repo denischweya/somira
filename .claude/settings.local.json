@@ -27,7 +27,9 @@
       "WebFetch(domain:unpkg.com)",
       "Bash(curl:*)",
       "Bash(npm run build:cta:*)",
-      "Bash(npm run build:scroll-video-sections:*)"
+      "Bash(cd:*)",
+      "Bash(cd:*)",
+      "Bash(cd:*)"
     ],
     "deny": []
   }

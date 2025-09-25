@@ -1,0 +1,31 @@
+/**
+ * WordPress dependencies
+ */
+import { registerBlockType } from '@wordpress/blocks';
+
+/**
+ * Internal dependencies
+ */
+import './style.scss';
+import Edit from './edit';
+import save from './save';
+import metadata from './block.json';
+
+/**
+ * Block icon
+ */
+const icon = (
+	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM13 17h-2v-6h2v6zm0-8h-2V7h2v2z" fill="currentColor"/>
+	</svg>
+);
+
+/**
+ * Register the block
+ */
+registerBlockType(metadata.name, {
+	...metadata,
+	icon,
+	edit: Edit,
+	save,
+});

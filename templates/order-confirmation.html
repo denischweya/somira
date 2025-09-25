@@ -1,0 +1,81 @@
+<!-- wp:template-part {"slug":"header"} /-->
+
+<!-- wp:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="wp-block-group"><!-- wp:woocommerce/order-confirmation-status {"fontSize":"large"} /-->
+
+<!-- wp:woocommerce/order-confirmation-summary /-->
+
+<!-- wp:woocommerce/order-confirmation-totals-wrapper {"align":"wide"} -->
+<!-- wp:heading {"style":{"typography":{"fontSize":"24px"}}} -->
+<h2 class="wp-block-heading" style="font-size:24px">Order details</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/order-confirmation-totals {"lock":{"remove":true}} /-->
+<!-- /wp:woocommerce/order-confirmation-totals-wrapper -->
+
+<!-- wp:woocommerce/order-confirmation-downloads-wrapper {"align":"wide"} -->
+<!-- wp:heading {"style":{"typography":{"fontSize":"24px"}}} -->
+<h2 class="wp-block-heading" style="font-size:24px">Downloads</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/order-confirmation-downloads {"lock":{"remove":true}} /-->
+<!-- /wp:woocommerce/order-confirmation-downloads-wrapper -->
+
+<!-- wp:columns {"align":"wide","className":"wc-block-order-confirmation-address-wrapper"} -->
+<div class="wp-block-columns alignwide wc-block-order-confirmation-address-wrapper"><!-- wp:column -->
+<div class="wp-block-column"><!-- wp:woocommerce/order-confirmation-shipping-wrapper {"align":"wide"} -->
+<!-- wp:heading {"style":{"typography":{"fontSize":"24px"}}} -->
+<h2 class="wp-block-heading" style="font-size:24px">Shipping address</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/order-confirmation-shipping-address {"lock":{"remove":true}} /-->
+<!-- /wp:woocommerce/order-confirmation-shipping-wrapper --></div>
+<!-- /wp:column -->
+
+<!-- wp:column -->
+<div class="wp-block-column"><!-- wp:woocommerce/order-confirmation-billing-wrapper {"align":"wide"} -->
+<!-- wp:heading {"style":{"typography":{"fontSize":"24px"}}} -->
+<h2 class="wp-block-heading" style="font-size:24px">Billing address</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/order-confirmation-billing-address {"lock":{"remove":true}} /-->
+<!-- /wp:woocommerce/order-confirmation-billing-wrapper --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+
+<!-- wp:woocommerce/order-confirmation-additional-fields-wrapper {"align":"wide"} -->
+<!-- wp:heading {"style":{"typography":{"fontSize":"24px"}}} -->
+<h2 class="wp-block-heading" style="font-size:24px">Additional information</h2>
+<!-- /wp:heading -->
+
+<!-- wp:woocommerce/order-confirmation-additional-fields /-->
+<!-- /wp:woocommerce/order-confirmation-additional-fields-wrapper -->
+
+<!-- wp:woocommerce/order-confirmation-additional-information /-->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"0","top":"63px"}},"typography":{"fontSize":"44px","fontStyle":"normal","fontWeight":"700"}}} -->
+<p style="margin-top:63px;margin-bottom:0;font-size:44px;font-style:normal;font-weight:700">Feedback</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"9px","bottom":"0"}},"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"300"}}} -->
+<p style="margin-top:9px;margin-bottom:0;font-size:14px;font-style:normal;font-weight:300">We appreciate your feedback so we can improve our customer experience and the Somira brand.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:jetpack/contact-form {"subject":"New feedback received from your website","to":"orders@somira.co","style":{"spacing":{"padding":{"top":"3px","bottom":"var:preset|spacing|20"}}}} -->
+<div class="wp-block-jetpack-contact-form" style="padding-top:3px;padding-bottom:var(--wp--preset--spacing--20)"><!-- wp:jetpack/field-name {"required":true,"requiredText":"*"} /-->
+
+<!-- wp:jetpack/field-email {"required":true,"requiredText":"*"} /-->
+
+<!-- wp:jetpack/field-textarea {"label":"What has led you to purchase the Somira DeepRelief™ Massager Deluxe?","required":true,"requiredText":"*"} /-->
+
+<!-- wp:jetpack/field-textarea {"label":"How did you first hear about us?","requiredText":"*"} /-->
+
+<!-- wp:jetpack/field-textarea {"label":"How easy was the checkout process? Is there anything you would improve about the customer experience?","requiredText":"*"} /-->
+
+<!-- wp:jetpack/field-textarea {"label":"Any other thoughts, feedback, or suggestions for us?"} /-->
+
+<!-- wp:jetpack/button {"element":"button","text":"Send Feedback","lock":{"remove":true}} /--></div>
+<!-- /wp:jetpack/contact-form --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer"} /-->

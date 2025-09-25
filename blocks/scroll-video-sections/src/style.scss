@@ -3,24 +3,44 @@
  */
 
 .wp-block-somira-scroll-video-sections {
-	scroll-behavior:smooth;
-	height: 100%;
-	max-height: 1000px;
+	position: relative;
+
 	overflow-x: hidden;
-	pointer-events: none;
-	position: sticky;
-	top: 0;
-	height: 100vh; 
-	z-index: 9999;
-	
+
 	.scroll-video-wrapper {
 		position: relative;
+		max-width: 1530px;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		border-radius: 40px;
 		width: 100%;
-		height: 100%;
-		max-height: 1000px;
-		background-image: url(/assets/images/block-bg.png);
-		background-repeat: no-repeat;
-		background-size: cover;
+		padding-bottom: 6rem;
+		background-color: #E1D8C6;
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;   /* Position inside wrapper */
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url(/assets/images/texture.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			z-index: 0;  /* keep it behind content */
+		}
+		
+
+	
+		/* make sure inner content stays above */
+		> * {
+			position: relative;
+			z-index: 1;
+		}
+		@media (max-width:768px) {
+			display: none;
+		}
 	}
 	
 	// Header section
@@ -48,24 +68,17 @@
 			margin: 0 auto;
 		}
 	}
-	.somira-sticky {
-		position: sticky;
-		top: 0;
-		height: 100vh;   /* often used for full-screen sticky sections */
-		background: #FFF5D9;
-	  }
 	// Main content container
 	.scroll-video-container {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 4rem;
 		max-width: 1400px;
-		max-height: 690px;
 		margin: 0 auto;
 		padding: 0 2rem;
-		position: sticky;
-		top: 0;
+		position: relative;
 		z-index: 1;
+
 		
 		// Left column - Text sections
 		.text-sections-column {
@@ -81,11 +94,17 @@
 				position: relative;
 				transition: all 0.3s ease;
 				border-radius: 10px;
+				cursor: pointer;
 
+				&:hover {
+					background-color: rgba(255, 255, 255, 0.5);
+					transform: translateY(-2px);
+				}
 				
 				&.active {
-				background-color: #fff;
-				border-left: 8px solid #C8AE99;
+					background-color: #fff;
+					border-left: 8px solid #C8AE99;
+					box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 					
 					.section-content {
 						transform: translateX(0);
@@ -123,16 +142,15 @@
 		.video-sections-column {
 			position: relative;
 			
-			.sticky-video-container {
+			.video-container {
 				position: relative;
 				height: 100%;
-				max-height: 690px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				overflow: hidden;
 				border-radius: 16px;
-				background: #000;
+				background: transparent;
 				
 				.video-section {
 					position: absolute;
@@ -173,12 +191,6 @@
 		}
 	}
 	
-	// Scroll spacer (invisible, creates scroll distance)
-	.scroll-spacer {
-		width: 100%;
-		pointer-events: none;
-	}
-	
 	// Mobile responsive design
 	@media (max-width: 1024px) {
 		.scroll-video-container {
@@ -192,6 +204,89 @@
 	}
 	
 	@media (max-width: 768px) {
+		.scroll-video-wrapper {
+			display: none;
+		}
+		
+		.mobile-scroll-alternative {
+			display: block;
+			max-width: 540px;
+			margin: 0 auto;
+			position: relative;
+			min-height: 100vh;
+			
+			.mobile-scroll-container {
+				position: relative;
+				height: 100vh;
+				width: 100%;
+				touch-action: pan-y;
+				will-change: transform;
+				-webkit-overflow-scrolling: touch;
+				overscroll-behavior: none;
+				-webkit-transform: translateZ(0);
+				transform: translateZ(0);
+			}
+			
+			.mobile-canvas {
+				position: sticky;
+				top: 0;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				display: block;
+				z-index: 1;
+				width: 450px !important;
+				height: 100vh !important;
+				will-change: transform;
+				transform: translateZ(0);
+				-webkit-transform: translateZ(0);
+				-webkit-backface-visibility: hidden;
+				backface-visibility: hidden;
+				image-rendering: -webkit-optimize-contrast;
+				image-rendering: crisp-edges;
+			}
+			
+			.mobile-overlay {
+				position: fixed;
+				bottom: 8%;
+				left: 50%;
+				transform: translateX(-50%);
+				width: min(90%, 600px);
+				max-width: 540px;
+				background: rgba(0, 0, 0, 0.7);
+				backdrop-filter: blur(10px);
+				color: white;
+				padding: 2rem;
+				border-radius: 16px;
+				text-align: left;
+				z-index: 10;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+				pointer-events: none;
+				-webkit-user-select: none;
+				user-select: none;
+				will-change: opacity;
+				transform: translateX(-50%) translateZ(0);
+				
+				.mobile-text-title {
+					font-size: clamp(1.5rem, 4vw, 2.5rem);
+					font-weight: 600;
+					line-height: 1.2;
+					letter-spacing: -0.02em;
+					margin: 0 0 1rem 0;
+					transition: opacity 0.3s ease;
+				}
+				
+				.mobile-text-description {
+					font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+					font-weight: 400;
+					line-height: 1.5;
+					margin: 0;
+					opacity: 0.9;
+					transition: opacity 0.3s ease;
+				}
+			}
+		}
+		
 		.scroll-video-container {
 			grid-template-columns: 1fr;
 			gap: 2rem;
@@ -225,7 +320,7 @@
 			.video-sections-column {
 				order: 1;
 				
-				.sticky-video-container {
+				.video-container {
 					position: relative;
 					height: 60vh;
 					margin-bottom: 2rem;
@@ -237,9 +332,12 @@
 			padding: 2rem 1rem 3rem;
 		}
 		
-		// Reduce scroll spacer on mobile
-		.scroll-spacer {
-			height: auto !important;
+
+	}
+	
+	@media (min-width: 769px) {
+		.mobile-scroll-alternative {
+			display: none;
 		}
 	}
 	
@@ -257,7 +355,7 @@
 				}
 			}
 			
-			.video-sections-column .sticky-video-container {
+			.video-sections-column .video-container {
 				height: 50vh;
 				border-radius: 12px;
 			}

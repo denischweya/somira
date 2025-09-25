@@ -15,7 +15,7 @@ export default function save({ attributes }) {
     );
 
     return (
-        <div {...blockProps}>
+        <div {...blockProps} data-block-path="/wp-content/themes/somira/blocks/scroll-video-sections/">
             <div className="scroll-video-wrapper">
                 {/* Header Section */}
                 <div className="scroll-video-header">
@@ -49,9 +49,9 @@ export default function save({ attributes }) {
                         ))}
                     </div>
 
-                    {/* Right Column - Sticky Video Container */}
+                    {/* Right Column - Video Container */}
                     <div className="video-sections-column">
-                        <div className="sticky-video-container">
+                        <div className="video-container">
                             {validSections.map((section, index) => (
                                 <div 
                                     key={section.id || index}
@@ -78,9 +78,27 @@ export default function save({ attributes }) {
                         </div>
                     </div>
                 </div>
+            </div>
 
-                {/* Scroll spacer for animation */}
-                <div className="scroll-spacer" style={{ height: `${validSections.length * 100}vh` }}></div>
+            {/* Mobile Alternative Component */}
+            <div className="mobile-scroll-alternative">
+                <div className="mobile-scroll-container" style={{ height: `${validSections.length * 100}vh` }}>
+                    <canvas 
+                        id="mobileSequence" 
+                        className="mobile-canvas"
+                        width="450" 
+                        height="800"
+                    ></canvas>
+                </div>
+                
+                <div className="mobile-overlay">
+                    <h2 className="mobile-text-title" id="mobileTextTitle">
+                        {validSections[0]?.title || 'Interactive Experience'}
+                    </h2>
+                    <p className="mobile-text-description" id="mobileTextDescription">
+                        {validSections[0]?.text || 'Scroll to explore the interactive experience.'}
+                    </p>
+                </div>
             </div>
         </div>
     );

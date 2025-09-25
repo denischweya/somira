@@ -4,4 +4,14 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#viewscript
  */
 
-console.log('Hero block view script loaded.');
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.querySelector('.somira-hero-button');
+    let angle = 0;
+    function rotate() {
+      angle = (angle + 1) % 360;
+      btn.style.setProperty('--angle', angle + 'deg');
+      requestAnimationFrame(rotate);
+    }
+    rotate();
+  });
+  
