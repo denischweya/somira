@@ -290,6 +290,7 @@ if (! function_exists('somira_register_blocks')) :
         register_block_type(__DIR__ . '/blocks/product-showcase/src');
         register_block_type(__DIR__ . '/blocks/scroll-video-sections');
         register_block_type(__DIR__ . '/blocks/faq-accordion/src');
+        register_block_type(__DIR__ . '/blocks/enhanced-video/src');
     }
 endif;
 add_action('init', 'somira_register_blocks');
@@ -379,3 +380,34 @@ add_filter('render_block', function ($block_content, $block) {
     }
     return $block_content;
 }, 10, 2);
+
+// Enqueues Enhanced Video block assets.
+if (! function_exists('somira_enqueue_enhanced_video_assets')) :
+    /**
+     * Enqueues Enhanced Video block JavaScript.
+     *
+     * @since Somira 1.0
+     *
+     * @return void
+     */
+    function somira_enqueue_enhanced_video_assets()
+    {
+        // Only enqueue on pages that contain our enhanced video block
+        if (has_block('somira/enhanced-video')) {
+            wp_enqueue_script(
+                'somira-enhanced-video',
+                get_template_directory_uri() . '/blocks/enhanced-video/dist/view.js',
+                array(),
+                filemtime(get_template_directory() . '/blocks/enhanced-video/dist/view.js'),
+                true
+            );
+            
+            // Add inline script as backup
+            wp_add_inline_script(
+                'somira-enhanced-video',
+                'console.log("Enhanced Video: Script enqueued successfully"); if(typeof window.initEnhancedVideo === "function") { window.initEnhancedVideo(); } else { setTimeout(function(){ if(typeof window.initEnhancedVideo === "function") window.initEnhancedVideo(); }, 1000); }'
+            );
+        }
+    }
+endif;
+add_action('wp_enqueue_scripts', 'somira_enqueue_enhanced_video_assets');

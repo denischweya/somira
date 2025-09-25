@@ -51,7 +51,7 @@
 		margin: 0 auto;
 		
 		.scroll-video-title {
-			font-size: clamp(2.5rem, 8vw, 4rem);
+			font-size: clamp(2.5rem, 8vw, 48px);
 			font-weight: 800;
 			line-height: 1.1;
 			margin: 0 0 1rem 0;
@@ -60,7 +60,7 @@
 		}
 		
 		.scroll-video-subtitle {
-			font-size: clamp(1.1rem, 3vw, 1.5rem);
+			font-size: clamp(1.1rem, 3vw, 20px);
 			line-height: 1.4;
 			margin: 0;
 			color: #666;
@@ -85,7 +85,7 @@
 			position: relative;
 			display: flex;
 			flex-direction: column;
-			gap: 24px;
+			gap: 10px;
 			
 			.text-section {
 				padding: 15px 30px;
@@ -95,10 +95,13 @@
 				transition: all 0.3s ease;
 				border-radius: 10px;
 				cursor: pointer;
+				background-color: rgba(255, 255, 255, 0.2);
+				border-left: 8px solid #fff;
 
 				&:hover {
-					background-color: rgba(255, 255, 255, 0.5);
+					background-color: rgba(255, 255, 255, 0.7);
 					transform: translateY(-2px);
+					border-left: 8px solid rgba(255, 255, 255, 0.7);
 				}
 				
 				&.active {
@@ -127,7 +130,7 @@
 					}
 					
 					.section-text {
-						font-size: clamp(0.9rem, 2vw, 20px);
+						font-size: clamp(0.9rem, 2vw, 18px);
 						font-weight: 400;
 						line-height: 1.5;
 						margin: 0;
@@ -165,9 +168,9 @@
 					.scroll-video {
 						width: 100%;
 						height: 100%;
-						object-fit: cover;
+						object-fit: contain;
 						border-radius: 16px;
-						background: #000;
+						background: transparent;
 					}
 					
 					.video-placeholder {

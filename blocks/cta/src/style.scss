@@ -61,24 +61,44 @@
 				z-index: 1;
 				border: 3px solid transparent;
 				background:
-					linear-gradient(#202020, #202020) padding-box,
-					conic-gradient(
-						from var(--angle, 0deg),
-						transparent,
-						 #FFF5D9 10%,
-						transparent 20%
-						
-					) border-box;
+				/* top layer: solid fill */
+				linear-gradient(var(--wp--preset--color--night, #282828), var(--wp--preset--color--night, #282828)) padding-box,
+				/* first conic gradient (clockwise) */
+				conic-gradient(
+				  from var(--angle, 0deg),
+				  transparent,
+				 
+				  #282828 10%,
+				  #FFF5D9 40%,
+				  #282828 10%,
+				  rgba(40, 40, 40, 0.8) 30%,
+				) border-box;
 			
-				&:hover,
-				&.is-hovered {
-					transform: translateY(-1px) scaleX(1.05);
-				}
+				/* overflow hidden not strictly needed here if content stays inside border */
+				transition: all 0.3s ease; /* transition both */
+			
 			
 				&:focus {
 					outline: 2px solid #FFF5D9;
 					outline-offset: 2px;
 				}
+			}
+			/* overlay layer */
+			.cta-link::before {
+				content: "";
+				position: absolute;
+				inset: 0; /* full cover */
+				background-color: rgba(255, 255, 255, 0.08); /* light overlay */
+				border-radius: inherit;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+				z-index: -1; /* stays under text, above gradient fill */
+			}
+			
+			/* on hover/focus, fade in overlay */
+			.cta-link:hover::before,
+			.cta-link :focus::before {
+				opacity: 1;
 			}
 			
 			.lifetime-warranty {

@@ -1,0 +1,75 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "somira/enhanced-video",
+	"version": "1.0.0",
+	"title": "Enhanced Video",
+	"category": "media",
+	"icon": "video-alt2",
+	"description": "Enhanced video block with custom thumbnail, play button, and modal functionality.",
+	"keywords": ["video", "thumbnail", "modal", "play"],
+	"example": {},
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"],
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"attributes": {
+		"src": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "video",
+			"attribute": "src"
+		},
+		"id": {
+			"type": "number"
+		},
+		"poster": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "video",
+			"attribute": "poster"
+		},
+		"controls": {
+			"type": "boolean",
+			"source": "attribute",
+			"selector": "video",
+			"attribute": "controls",
+			"default": true
+		},
+		"autoplay": {
+			"type": "boolean",
+			"source": "attribute",
+			"selector": "video",
+			"attribute": "autoplay"
+		},
+		"loop": {
+			"type": "boolean",
+			"source": "attribute",
+			"selector": "video",
+			"attribute": "loop"
+		},
+		"muted": {
+			"type": "boolean",
+			"source": "attribute",
+			"selector": "video",
+			"attribute": "muted"
+		},
+		"customThumbnail": {
+			"type": "object",
+			"default": null
+		},
+		"customPlayIcon": {
+			"type": "object",
+			"default": null
+		}
+	},
+	"textdomain": "somira",
+	"editorScript": "file:../dist/index.js",
+	"editorStyle": "file:../dist/index.css",
+	"style": "file:../dist/style-index.css",
+	"viewScript": "file:../dist/view.js"
+}

@@ -30,30 +30,30 @@ function initializeCarousel(block) {
 		draggable: true,
 		freeScroll: false,
 		groupCells: 1,
-		percentPosition: false
+		percentPosition: false,
 	});
 
 	// Add mouse wheel / trackpad scrolling support
-	carouselContainer.addEventListener('wheel', (e) => {
-		e.preventDefault();
+	// carouselContainer.addEventListener('wheel', (e) => {
+	// 	e.preventDefault();
 		
-		// Check for horizontal scroll (trackpad side swipe)
-		if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-			if (e.deltaX > 0) {
-				flickity.next();
-			} else {
-				flickity.previous();
-			}
-		} 
-		// Also support vertical scroll for mouse wheel
-		else if (Math.abs(e.deltaY) > 10) {
-			if (e.deltaY > 0) {
-				flickity.next();
-			} else {
-				flickity.previous();
-			}
-		}
-	}, { passive: false });
+	// 	// Check for horizontal scroll (trackpad side swipe)
+	// 	if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+	// 		if (e.deltaX > 0) {
+	// 			flickity.next();
+	// 		} else {
+	// 			flickity.previous();
+	// 		}
+	// 	} 
+	// 	// Also support vertical scroll for mouse wheel
+	// 	else if (Math.abs(e.deltaY) > 10) {
+	// 		if (e.deltaY > 0) {
+	// 			flickity.next();
+	// 		} else {
+	// 			flickity.previous();
+	// 		}
+	// 	}
+	// }, { passive: false });
 
 	// Custom navigation controls
 	prevButton.addEventListener('click', () => {

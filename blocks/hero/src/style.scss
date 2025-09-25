@@ -111,7 +111,7 @@
 	background-color: var(--wp--preset--color--night, #282828);
 	color: var(--wp--preset--color--white-sand, #FFFEFD);
 	text-decoration: none;
-	border-radius: 6px;
+	border-radius: 10px;
 	font-weight: 700;
 	font-size: 24px;
 	cursor: pointer;
@@ -119,24 +119,39 @@
 	z-index: 1;
 	border: 3px solid transparent; /* important: border must be transparent so gradient border shows through */
 	background:
-	  /* top layer: solid fill */
-	  linear-gradient(var(--wp--preset--color--night, #282828), var(--wp--preset--color--night, #282828)) padding-box,
-	  /* bottom layer: conic gradient border */
-	  conic-gradient(
-		from var(--angle, 0deg),
-		transparent,
-		#FFF5D9 10%,
-		transparent 20%
-	  ) border-box;
+    /* top layer: solid fill */
+    linear-gradient(var(--wp--preset--color--night, #282828), var(--wp--preset--color--night, #282828)) padding-box,
+    /* first conic gradient (clockwise) */
+    conic-gradient(
+      from var(--angle, 0deg),
+      transparent,
+     
+      #282828 10%,
+	  #FFF5D9 40%,
+	  #282828 10%,
+	  rgba(40, 40, 40, 0.8) 30%,
+    ) border-box;
+
 	/* overflow hidden not strictly needed here if content stays inside border */
 	transition: all 0.3s ease; /* transition both */
-
-	&:hover,
-	&:focus {
-		transform: scaleX(1.09);
-	}
+  }
+/* overlay layer */
+.somira-hero-button::before {
+	content: "";
+	position: absolute;
+	inset: 0; /* full cover */
+	background-color: rgba(255, 255, 255, 0.08); /* light overlay */
+	border-radius: inherit;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: -1; /* stays under text, above gradient fill */
   }
   
+  /* on hover/focus, fade in overlay */
+  .somira-hero-button:hover::before,
+  .somira-hero-button:focus::before {
+	opacity: 1;
+  }
   /* JS-updated CSS variable controls rotation */
   @keyframes dummy {
 	from { --angle: 0deg; }

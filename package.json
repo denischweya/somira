@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Somira WordPress theme with custom blocks",
   "scripts": {
-    "build": "for dir in blocks/*/; do block=$(basename \"$dir\"); if [ -f \"$dir/src/index.js\" ]; then echo \"Building $block...\"; wp-scripts build \"$dir/src/index.js\" --output-path=\"$dir/dist\"; fi; done",
-    "start": "node -e \"const fs = require('fs'); const { execSync } = require('child_process'); const blocks = fs.readdirSync('blocks').filter(block => block && fs.statSync('blocks/' + block).isDirectory() && fs.existsSync('blocks/' + block + '/src/index.js')); const commands = blocks.map(block => 'wp-scripts start blocks/' + block + '/src/index.js --output-path=blocks/' + block + '/dist'); execSync('npx concurrently --names=' + blocks.join(',') + ' ' + commands.map(cmd => '\\'' + cmd + '\\'').join(' '), { stdio: 'inherit' });\"",
+    "build": "for dir in blocks/*/; do block=$(basename \"$dir\"); if [ -f \"$dir/src/index.js\" ]; then echo \"Building $block...\"; npx wp-scripts build \"$dir/src/index.js\" --output-path=\"$dir/dist\"; fi; done",
+    "start": "node -e \"const fs = require('fs'); const { execSync } = require('child_process'); const blocks = fs.readdirSync('blocks').filter(block => block && fs.statSync('blocks/' + block).isDirectory() && fs.existsSync('blocks/' + block + '/src/index.js')); const commands = blocks.map(block => 'npx wp-scripts start blocks/' + block + '/src/index.js --output-path=blocks/' + block + '/dist'); execSync('npx concurrently --names=' + blocks.join(',') + ' ' + commands.map(cmd => '\\'' + cmd + '\\'').join(' '), { stdio: 'inherit' });\"",
     "build:hero": "wp-scripts build blocks/hero/src/index.js --output-path=blocks/hero/dist",
     "build:carousel": "wp-scripts build blocks/carousel/src/index.js --output-path=blocks/carousel/dist",
     "build:cta": "wp-scripts build blocks/cta/src/index.js --output-path=blocks/cta/dist",

@@ -20,7 +20,7 @@ export default function save({ attributes }) {
                 {/* Header Section */}
                 <div className="scroll-video-header">
                     <RichText.Content
-                        tagName="h1"
+                        tagName="h2"
                         className="scroll-video-title"
                         value={blockTitle}
                     />

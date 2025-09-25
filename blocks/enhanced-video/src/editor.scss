@@ -1,0 +1,209 @@
+/**
+ * Enhanced Video Block Editor Styles
+ * Applied only in the block editor.
+ */
+
+.wp-block-somira-enhanced-video {
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	border: 2px dashed #ccc;
+	border-radius: 8px;
+	background-color: #f8f9fa;
+	
+	// Editor-specific preview container
+	.enhanced-video-preview {
+		position: relative;
+		width: 100%;
+	}
+
+	// Thumbnail preview in editor
+	.enhanced-video-thumbnail-preview {
+		position: relative;
+		width: 100%;
+		border-radius: 6px;
+		overflow: hidden;
+		background: #fff;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+		.thumbnail-preview {
+			width: 100%;
+			height: auto;
+			display: block;
+			object-fit: cover;
+			aspect-ratio: 16/9;
+		}
+
+		.play-button-preview {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			pointer-events: none; // Prevent clicking in editor
+			z-index: 2;
+		}
+
+		.play-icon-preview {
+			width: 60px;
+			height: 60px;
+			object-fit: contain;
+			filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+		}
+
+		.default-play-icon-preview {
+			filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+			
+			svg {
+				width: 60px;
+				height: 60px;
+			}
+		}
+	}
+
+	// Direct video preview in editor
+	video {
+		width: 100%;
+		height: auto;
+		border-radius: 6px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	// Editor placeholder styling
+	.components-placeholder {
+		min-height: 200px;
+		
+		.components-placeholder__label {
+			font-weight: 600;
+			color: #1e1e1e;
+		}
+		
+		.components-placeholder__instructions {
+			color: #757575;
+			margin-bottom: 20px;
+		}
+		
+		.components-button.is-primary {
+			background: #0073aa;
+			border-color: #0073aa;
+			
+			&:hover {
+				background: #005177;
+				border-color: #005177;
+			}
+		}
+	}
+}
+
+// Inspector Controls Styling
+.block-editor-block-inspector {
+	.enhanced-video-media-preview {
+		img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 4px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			margin-bottom: 10px;
+		}
+		
+		.components-button {
+			margin-right: 10px;
+			
+			&.is-destructive {
+				color: #cc1818;
+				
+				&:hover {
+					color: #a02828;
+				}
+			}
+		}
+	}
+	
+	.components-panel__body-title {
+		font-weight: 600;
+	}
+	
+	.components-base-control__label {
+		font-weight: 500;
+		margin-bottom: 8px;
+	}
+	
+	.components-toggle-control {
+		margin-bottom: 16px;
+		
+		.components-toggle-control__label {
+			font-weight: 500;
+		}
+	}
+}
+
+// Block toolbar styling
+.block-editor-block-toolbar {
+	.components-toolbar-button {
+		&[aria-label*="Replace video"] {
+			svg {
+				color: #0073aa;
+			}
+		}
+	}
+}
+
+// Mobile responsiveness in editor
+@media (max-width: 782px) {
+	.wp-block-somira-enhanced-video {
+		.enhanced-video-thumbnail-preview {
+			.play-icon-preview,
+			.default-play-icon-preview svg {
+				width: 50px;
+				height: 50px;
+			}
+		}
+		
+		.components-placeholder {
+			min-height: 150px;
+			padding: 20px;
+			
+			.components-placeholder__label {
+				font-size: 16px;
+			}
+			
+			.components-placeholder__instructions {
+				font-size: 14px;
+			}
+		}
+	}
+	
+	.block-editor-block-inspector {
+		.enhanced-video-media-preview {
+			.components-button {
+				margin-bottom: 10px;
+				margin-right: 0;
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+}
+
+// Dark mode support for editor
+@media (prefers-color-scheme: dark) {
+	.wp-block-somira-enhanced-video {
+		border-color: #3c434a;
+		background-color: #1e1e1e;
+		
+		.enhanced-video-thumbnail-preview {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		}
+		
+		video {
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		}
+	}
+}
+
+// Focus states for accessibility
+.wp-block-somira-enhanced-video {
+	&:focus-within {
+		border-color: #0073aa;
+		box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+	}
+}
