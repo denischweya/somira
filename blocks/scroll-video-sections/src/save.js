@@ -15,12 +15,12 @@ export default function save({ attributes }) {
     );
 
     return (
-        <div {...blockProps} data-block-path="/wp-content/themes/somira/blocks/scroll-video-sections/">
+        <div {...blockProps}>
             <div className="scroll-video-wrapper">
                 {/* Header Section */}
                 <div className="scroll-video-header">
                     <RichText.Content
-                        tagName="h2"
+                        tagName="h1"
                         className="scroll-video-title"
                         value={blockTitle}
                     />
@@ -49,9 +49,9 @@ export default function save({ attributes }) {
                         ))}
                     </div>
 
-                    {/* Right Column - Video Container */}
+                    {/* Right Column - Sticky Video Container */}
                     <div className="video-sections-column">
-                        <div className="video-container">
+                        <div className="sticky-video-container">
                             {validSections.map((section, index) => (
                                 <div 
                                     key={section.id || index}
@@ -75,74 +75,34 @@ export default function save({ attributes }) {
                                     )}
                                 </div>
                             ))}
-                            
-                            {/* Pause/Play Button */}
-                            <button className="video-pause-button" aria-label="Pause auto-play">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                    <rect x="6" y="4" width="4" height="16" fill="currentColor"/>
-                                    <rect x="14" y="4" width="4" height="16" fill="currentColor"/>
-                                </svg>
-                            </button>
                         </div>
                     </div>
                 </div>
+
+                {/* Scroll spacer for animation */}
+                <div className="scroll-spacer" style={{ height: `${validSections.length * 100}vh` }}></div>
             </div>
 
-            {/* Mobile Layout */}
-            <div className="mobile-scroll-video">
-                {/* Mobile Header */}
-                <div className="mobile-header">
-                    <RichText.Content
-                        tagName="h2"
-                        className="mobile-title"
-                        value={blockTitle}
-                    />
-                    <RichText.Content
-                        tagName="p"
-                        className="mobile-subtitle"
-                        value={blockSubtitle}
-                    />
+            {/* Mobile Alternative Component */}
+            <div className="mobile-scroll-alternative">
+                <div className="mobile-scroll-container" style={{ height: `${validSections.length * 100}vh` }}>
+                    <canvas 
+                        id="mobileSequence" 
+                        className="mobile-canvas"
+                        width="450" 
+                        height="800"
+                    ></canvas>
                 </div>
-
-                {/* Mobile Carousel Container */}
-                <div className="mobile-carousel">
-                    {validSections.map((section, index) => (
-                        <div 
-                            key={section.id || index}
-                            className="mobile-slide"
-                            data-slide-index={index}
-                        >
-                            {/* Video */}
-                            <div className="mobile-video-container">
-                                {section.videoUrl ? (
-                                    <video 
-                                        className="mobile-video"
-                                        src={section.videoUrl}
-                                        muted
-                                        playsInline
-                                        preload="metadata"
-                                        loop
-                                        data-section={index}
-                                    />
-                                ) : (
-                                    <div className="mobile-video-placeholder">
-                                        <p>No video selected for section {index + 1}</p>
-                                    </div>
-                                )}
-                            </div>
-                            
-                            {/* Text Section */}
-                            <div className="mobile-text-section">
-                                <div className="mobile-text-content">
-                                    <h3 className="mobile-section-title">{section.title}</h3>
-                                    <p className="mobile-section-text">{section.text}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                
+                <div className="mobile-overlay">
+                    <h2 className="mobile-text-title" id="mobileTextTitle">
+                        {validSections[0]?.title || 'Interactive Experience'}
+                    </h2>
+                    <p className="mobile-text-description" id="mobileTextDescription">
+                        {validSections[0]?.text || 'Scroll to explore the interactive experience.'}
+                    </p>
                 </div>
             </div>
-
         </div>
     );
 }

@@ -17,7 +17,6 @@
 		background-repeat: no-repeat;
 		margin: 0 auto;
 		height: 700px;
-		overflow: hidden;
 		
 		@media (max-width: 768px) {
 			flex-direction: column;
@@ -47,75 +46,57 @@
 			
 			.cta-link {
 				display: inline-block;
+				background: #202020;
 				color: white;
-				padding: 16px 28px;
+				padding: 12px 24px;
 				border-radius: 8px;
 				text-decoration: none;
-				font-weight: 700;
-				font-size: 24px;
-				max-width: 387px;
-				width: 100%;
+				font-weight: 600;
+				font-size: 16px;
 				transition: all 0.3s ease;
 				position: relative;
 				cursor: pointer;
-				z-index: 1;
-				border: 3px solid transparent;
-				background:
-				/* top layer: solid fill */
-				linear-gradient(var(--wp--preset--color--night, #282828), var(--wp--preset--color--night, #282828)) padding-box,
-				/* first conic gradient (clockwise) */
-				conic-gradient(
-				  from var(--angle, 0deg),
-				  transparent,
-				 
-				  #282828 10%,
-				  #FFF5D9 40%,
-				  #282828 10%,
-				  rgba(40, 40, 40, 0.8) 30%,
-				) border-box;
+				border: none;
+				z-index: 0; /* make room for glow layers */
 			
-				/* overflow hidden not strictly needed here if content stays inside border */
-				transition: all 0.3s ease; /* transition both */
-			
+				&:hover,
+				&.is-hovered {
+					background: #2a2a2a;
+					transform: translateY(-1px);
+				}
 			
 				&:focus {
 					outline: 2px solid #FFF5D9;
 					outline-offset: 2px;
 				}
-			}
-			/* overlay layer */
-			.cta-link::before {
-				content: "";
-				position: absolute;
-				inset: 0; /* full cover */
-				background-color: rgba(255, 255, 255, 0.08); /* light overlay */
-				border-radius: inherit;
-				opacity: 0;
-				transition: opacity 0.3s ease;
-				z-index: -1; /* stays under text, above gradient fill */
-			}
 			
-			/* on hover/focus, fade in overlay */
-			.cta-link:hover::before,
-			.cta-link :focus::before {
-				opacity: 1;
-			}
+				/* gradient border */
+				&::before {
+					content: "";
+					position: absolute;
+					inset: 0;
+					border-radius: 10px;
+					padding: 2px;
+					background:
+						/* Top gradient */
+						linear-gradient(192deg, #202020 20%, #FFF5D9 52%, #202020 86%) top/97% 45% no-repeat,
+						
+						/* Bottom gradient */
+						linear-gradient(146deg,   #202020 10%, #FFF5D9 91%,#202020 10%) bottom/69% 50% no-repeat,
+						
+						/* Left side */
+						linear-gradient(to bottom,  #FFF5D9 16%, #202020 54%) left/53% 114% no-repeat,
+						
+						/* Right side */
+						linear-gradient(to bottom, #202020 0%, #202020 28%, #FFF5D9 30%, #FFF5D9 70%, #202020 70%, #202020 100%) right/7% 0% no-repeat;
 			
-			.lifetime-warranty {
-				max-width: 250px;
-				margin: 19px auto 0;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 8px;
-				padding-bottom: 8px;
-				
-				.warranty-text {
-					color: #fff;
-					font-size: 16px;
-					font-style: normal;
-					font-weight: 700;
+					-webkit-mask:
+						linear-gradient(#fff 0 0) content-box,
+						linear-gradient(#fff 0 0);
+					-webkit-mask-composite: destination-out;
+					mask-composite: exclude;
+					pointer-events: none;
+					z-index: 1;
 				}
 			}
 		}

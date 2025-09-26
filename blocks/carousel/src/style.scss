@@ -4,11 +4,6 @@
 
 .wp-block-somira-carousel {
 	margin: 2rem 0;
-	margin-top: clamp(
-		25px,
-		calc(25px + (94 * ((100vw - 768px) / (1024 - 768)))),
-		119px
-	  )!important;
 	
 	.carousel-header {
 		text-align: center;
@@ -83,7 +78,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					background-color: rgba(0, 0, 0, 0.65);
+					background-color: rgba(0, 0, 0, 0.8);
 					
 					
 					&:hover {

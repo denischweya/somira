@@ -1,320 +1,488 @@
 /**
  * Frontend JavaScript for Scroll Video Sections Block
- * Desktop: Click-based video loading with autoplay
- * Mobile: Canvas-based frame sequence animation with GSAP
+ * Uses GSAP + ScrollTrigger for scroll-based video playback
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Wait for GSAP to be available
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        console.error('GSAP or ScrollTrigger not loaded');
+        return;
+    }
+
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
     // Initialize all scroll video sections
     const scrollVideoBlocks = document.querySelectorAll('.wp-block-somira-scroll-video-sections');
     
     scrollVideoBlocks.forEach(block => {
-        initializeScrollVideoBlock(block);
+        // Check if mobile
+        if (window.innerWidth <= 768) {
+            initializeMobileSequence(block);
+        } else {
+            initializeScrollVideoSection(block);
+        }
     });
 });
 
-function initializeScrollVideoBlock(block) {
-    const isMobile = window.innerWidth <= 768;
-    
-    // Clean up any existing instances
-    if (block.autoLoopCleanup) {
-        block.autoLoopCleanup();
-    }
-    if (block.mobileCarouselCleanup) {
-        block.mobileCarouselCleanup();
-    }
-    
-    if (isMobile) {
-        initializeMobileCarousel(block);
-    } else {
-        initializeClickVideoSection(block);
-    }
-}
-
-// Handle window resize to switch between desktop/mobile versions
-window.addEventListener('resize', function() {
-    const scrollVideoBlocks = document.querySelectorAll('.wp-block-somira-scroll-video-sections');
-    scrollVideoBlocks.forEach(block => {
-        initializeScrollVideoBlock(block);
-    });
-});
-
-/**
- * Desktop version - Auto-loop functionality with text section navigation
- */
-function initializeClickVideoSection(block) {
+function initializeScrollVideoSection(block) {
     const textSections = block.querySelectorAll('.text-section');
     const videos = block.querySelectorAll('.scroll-video');
-    const videoSections = block.querySelectorAll('.video-section');
-    const pauseButton = block.querySelector('.video-pause-button');
     
     if (!textSections.length || !videos.length) {
         console.warn('No sections or videos found in scroll video block');
         return;
     }
 
-    // Set up videos for looping
-    videos.forEach((video, index) => {
-        video.muted = true;
-        video.playsInline = true;
-        video.loop = true;
-        video.preload = 'metadata';
-        
-        // Load video
-        video.load();
-    });
+    // Preload all videos
+    preloadVideos(videos);
 
-    let currentIndex = 0;
-    let autoLoopInterval = null;
-    let userPausedAutoLoop = false;
-    let resumeAutoLoopTimeout = null;
-    let isPaused = false;
+    // Set up GSAP ScrollTrigger animation (handles all sticky behavior)
+    setupStickyBlock(block, textSections);
 
-    // Function to activate section and sync animations
-    function activateSection(index, manualNavigation = false) {
-        // Remove active class from all text sections
-        textSections.forEach(section => section.classList.remove('active'));
-        
-        // Add active class to current section
-        if (textSections[index]) {
-            textSections[index].classList.add('active');
-        }
-
-        // Hide all videos
-        videoSections.forEach(videoSection => {
-            videoSection.style.display = 'none';
-            const video = videoSection.querySelector('.scroll-video');
-            if (video) {
-                video.pause();
-                video.currentTime = 0;
-            }
-        });
-        
-        // Show and play corresponding video
-        if (videoSections[index]) {
-            const videoSection = videoSections[index];
-            const video = videoSection.querySelector('.scroll-video');
-            
-            videoSection.style.display = 'block';
-            
-            if (video && video.src) {
-                video.play().catch(error => {
-                    console.warn('Video autoplay failed:', error);
-                });
-            }
-        }
-
-        currentIndex = index;
-
-        // Handle manual navigation
-        if (manualNavigation) {
-            // Pause auto-loop temporarily
-            if (autoLoopInterval) {
-                clearInterval(autoLoopInterval);
-                autoLoopInterval = null;
-            }
-            userPausedAutoLoop = true;
-            
-            // Clear any existing resume timeout
-            if (resumeAutoLoopTimeout) {
-                clearTimeout(resumeAutoLoopTimeout);
-            }
-            
-            // Resume auto-loop after 3 seconds
-            resumeAutoLoopTimeout = setTimeout(() => {
-                if (userPausedAutoLoop) {
-                    startAutoLoop();
-                    userPausedAutoLoop = false;
-                }
-            }, 3000);
-        }
+    // Handle mobile touch optimization
+    if (isMobileDevice()) {
+        optimizeForMobile(block);
     }
-
-    // Auto-loop functionality
-    function startAutoLoop() {
-        if (autoLoopInterval) {
-            clearInterval(autoLoopInterval);
-        }
-        
-        autoLoopInterval = setInterval(() => {
-            if (!userPausedAutoLoop && !isPaused) {
-                const nextIndex = (currentIndex + 1) % textSections.length;
-                activateSection(nextIndex, false);
-            }
-        }, 8000); // 8 seconds
-    }
-
-    // Make text sections clickable for direct navigation
-    textSections.forEach((textSection, index) => {
-        textSection.style.cursor = 'pointer';
-        
-        textSection.addEventListener('click', () => {
-            activateSection(index, true); // Mark as manual navigation
-        });
-    });
-
-    // Pause/Play button functionality
-    if (pauseButton) {
-        pauseButton.addEventListener('click', () => {
-            if (isPaused) {
-                // Resume auto-loop and animations
-                isPaused = false;
-                userPausedAutoLoop = false;
-                startAutoLoop();
-                pauseButton.classList.remove('paused');
-                pauseButton.setAttribute('aria-label', 'Pause auto-play');
-                
-                // Resume progress animations for active section
-                const activeSection = block.querySelector('.text-section.active');
-                if (activeSection) {
-                    activeSection.style.animationPlayState = 'running';
-                }
-            } else {
-                // Pause everything - auto-loop, videos, and animations
-                isPaused = true;
-                userPausedAutoLoop = true;
-                
-                // Clear auto-loop interval
-                if (autoLoopInterval) {
-                    clearInterval(autoLoopInterval);
-                    autoLoopInterval = null;
-                }
-                
-                // Clear any resume timeout
-                if (resumeAutoLoopTimeout) {
-                    clearTimeout(resumeAutoLoopTimeout);
-                    resumeAutoLoopTimeout = null;
-                }
-                
-                pauseButton.classList.add('paused');
-                pauseButton.setAttribute('aria-label', 'Resume auto-play');
-                
-                // Pause progress animations for active section
-                const activeSection = block.querySelector('.text-section.active');
-                if (activeSection) {
-                    activeSection.style.animationPlayState = 'paused';
-                }
-            }
-        });
-    }
-
-    // Initialize - activate first section and start auto-loop
-    activateSection(0, false);
-    startAutoLoop();
-
-    // Clean up intervals and timeouts when needed
-    block.autoLoopCleanup = () => {
-        if (autoLoopInterval) {
-            clearInterval(autoLoopInterval);
-        }
-        if (resumeAutoLoopTimeout) {
-            clearTimeout(resumeAutoLoopTimeout);
-        }
-        isPaused = false;
-    };
 }
 
-/**
- * Mobile version - Flickity carousel with swipe, pageDots and auto-play
- */
-function initializeMobileCarousel(block) {
-    const mobileCarousel = block.querySelector('.mobile-carousel');
-    const mobileVideos = block.querySelectorAll('.mobile-video');
-    const mobileTextSections = block.querySelectorAll('.mobile-text-section');
+function preloadVideos(videos) {
+    videos.forEach((video, index) => {
+        // Set up video for scroll control
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'auto'; // Changed to 'auto' for better preloading
+        
+        // Force video to load
+        video.load();
+        
+        // Prevent default video behavior
+        video.addEventListener('loadedmetadata', () => {
+            video.currentTime = 0;
+            console.log(`Video ${index + 1} loaded: duration ${video.duration}s`);
+        });
+
+        // Prevent playing
+        video.addEventListener('play', (e) => {
+            e.preventDefault();
+            video.pause();
+        });
+    });
+}
+
+
+function setupStickyBlock(block, textSections) {
+    if (!block || !textSections.length) return;
+
+    const scrollVideoContainer = block.querySelector('.scroll-video-container');
+    const videos = block.querySelectorAll('.scroll-video');
+    const videoSections = block.querySelectorAll('.video-section');
     
-    if (!mobileCarousel || !mobileVideos.length || !mobileTextSections.length) {
-        console.warn('Mobile carousel elements not found');
+    if (!scrollVideoContainer || !videos.length) return;
+
+    // Calculate scroll distance for 1-second video segments
+    // 1-second videos at 30fps = 30 frames per video
+    // For smooth scroll: need good amount of pixels per frame
+    const framesPerVideo = 20; // 1 second × 30fps = 30 frames
+    const pixelsPerFrame = 60; // pixels per frame for smooth experience
+    const scrollPerVideo = framesPerVideo * pixelsPerFrame; // 3,000px per 1-second video
+    const totalScrollDistance = scrollPerVideo * textSections.length; // total for all videos
+
+    // Pin the container first
+    ScrollTrigger.create({
+        trigger: scrollVideoContainer,
+        start: "top top",
+        end: `+=${totalScrollDistance}px`,
+        pin: true,
+        pinSpacing: true,
+        onEnter: () => console.log("Container pinned"),
+        onLeave: () => console.log("Container unpinned")
+    });
+
+    // Create one ScrollTrigger to handle section switching (no video manipulation)
+    ScrollTrigger.create({
+        trigger: scrollVideoContainer,
+        start: "top top",
+        end: `+=${totalScrollDistance}px`,
+        onUpdate: (self) => {
+            // Simple section switching logic only
+            const progress = self.progress;
+            const totalSections = textSections.length;
+            const currentSectionIndex = Math.floor(progress * totalSections);
+            const validSectionIndex = Math.min(currentSectionIndex, totalSections - 1);
+
+            // Update active text sections
+            textSections.forEach((section, idx) => {
+                section.classList.toggle('active', idx === validSectionIndex);
+            });
+
+            // Update video visibility
+            videoSections.forEach((vSection, idx) => {
+                if (idx === validSectionIndex) {
+                    vSection.style.display = 'block';
+                    vSection.style.opacity = '1';
+                } else {
+                    vSection.style.display = 'none';
+                    vSection.style.opacity = '0';
+                }
+            });
+        }
+    });
+
+    // Create one unified animation that controls all videos based on overall progress
+    ScrollTrigger.create({
+        trigger: scrollVideoContainer,
+        start: "top top",
+        end: `+=${totalScrollDistance}px`,
+        scrub: true,
+        onUpdate: (self) => {
+            const progress = self.progress;
+            const totalSections = textSections.length;
+            const currentSectionIndex = Math.floor(progress * totalSections);
+            const validSectionIndex = Math.min(currentSectionIndex, totalSections - 1);
+            const sectionProgress = (progress * totalSections) % 1;
+
+            // Animate the currently active video
+            videos.forEach((video, index) => {
+                if (index === validSectionIndex) {
+                    // Play 8 seconds of this video based on section progress
+                    const targetTime = sectionProgress * 8; // 0 to 8 seconds
+                    video.currentTime = Math.min(targetTime, video.duration - 0.1);
+                } else {
+                    // Reset other videos to start
+                    video.currentTime = 0;
+                }
+            });
+        }
+    });
+
+
+    // Initialize - show first video section
+    if (videoSections.length > 0) {
+        videoSections.forEach((videoSection, index) => {
+            if (index === 0) {
+                videoSection.style.display = 'block';
+                videoSection.style.opacity = '1';
+            } else {
+                videoSection.style.display = 'none';
+                videoSection.style.opacity = '0';
+            }
+        });
+    }
+
+    // Initialize - activate first text section
+    if (textSections.length > 0) {
+        textSections[0].classList.add('active');
+    }
+}
+
+
+
+
+function activateSection(textSection, videoSection, sectionIndex) {
+    // Highlight text section
+    textSection.classList.add('active');
+    
+    // Show corresponding video
+    const allVideoSections = textSection.closest('.wp-block-somira-scroll-video-sections')
+        .querySelectorAll('.video-section');
+    
+    allVideoSections.forEach((section, index) => {
+        if (index === sectionIndex) {
+            section.style.display = 'block';
+            gsap.fromTo(section, 
+                { opacity: 0 }, 
+                { opacity: 1, duration: 0.3 }
+            );
+        } else {
+            gsap.to(section, {
+                opacity: 0,
+                duration: 0.3,
+                onComplete: () => {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    });
+
+    console.log(`Activated section ${sectionIndex + 1}`);
+}
+
+function deactivateSection(textSection, sectionIndex) {
+    // Remove highlight from text section
+    textSection.classList.remove('active');
+    console.log(`Deactivated section ${sectionIndex + 1}`);
+}
+
+function updateVideoProgress(video, progress) {
+    if (!video.duration) return;
+    
+    // Update video currentTime based on scroll progress
+    const targetTime = progress * video.duration;
+    
+    // Only update if the difference is significant (performance optimization)
+    if (Math.abs(video.currentTime - targetTime) > 0.1) {
+        video.currentTime = targetTime;
+    }
+}
+
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function optimizeForMobile(block) {
+    // Add mobile-specific optimizations
+    block.classList.add('mobile-optimized');
+    
+    // Reduce video quality on mobile if needed
+    const videos = block.querySelectorAll('.scroll-video');
+    videos.forEach(video => {
+        // Add mobile-specific attributes
+        video.setAttribute('playsinline', 'true');
+        video.setAttribute('webkit-playsinline', 'true');
+        
+        // Optimize loading
+        video.preload = 'metadata';
+    });
+
+    // Adjust ScrollTrigger settings for mobile
+    ScrollTrigger.config({
+        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load,resize",
+        ignoreMobileResize: true
+    });
+}
+
+// Refresh ScrollTrigger on resize
+window.addEventListener('resize', () => {
+    ScrollTrigger.refresh();
+});
+
+// Debug function (remove in production)
+function debugScrollVideoSections() {
+    console.log('=== Scroll Video Sections Debug ===');
+    
+    const blocks = document.querySelectorAll('.wp-block-somira-scroll-video-sections');
+    console.log(`Found ${blocks.length} scroll video blocks`);
+    
+    blocks.forEach((block, blockIndex) => {
+        const textSections = block.querySelectorAll('.text-section');
+        const videos = block.querySelectorAll('.scroll-video');
+        
+        console.log(`Block ${blockIndex + 1}:`);
+        console.log(`  - Text sections: ${textSections.length}`);
+        console.log(`  - Videos: ${videos.length}`);
+        
+        videos.forEach((video, videoIndex) => {
+            console.log(`  - Video ${videoIndex + 1}: ${video.src}`);
+            console.log(`    Duration: ${video.duration || 'not loaded'}`);
+        });
+    });
+    
+    console.log('ScrollTrigger instances:', ScrollTrigger.getAll().length);
+}
+
+// Make debug function available globally (remove in production)
+window.debugScrollVideoSections = debugScrollVideoSections;
+
+// Mobile Canvas Sequence Functionality
+function initializeMobileSequence(block) {
+    const canvas = block.querySelector('#mobileSequence');
+    const textTitle = block.querySelector('#mobileTextTitle');
+    const textDescription = block.querySelector('#mobileTextDescription');
+    const textSections = block.querySelectorAll('.text-section');
+    
+    if (!canvas) {
+        console.warn('Mobile canvas not found in block');
         return;
     }
 
-    // Set up videos for looping
-    mobileVideos.forEach((video, index) => {
-        video.muted = true;
-        video.playsInline = true;
-        video.loop = true;
-        video.preload = 'metadata';
-        
-        // Load video
-        video.load();
-    });
+    console.log('Initializing mobile sequence...');
+    
+    // Configuration
+    const frameCount = 67;
+    const images = [];
+    const currentFrame = index => `/Volumes/M2 Cloud/projects/somira/frames/01_0${(index + 27).toString().padStart(4, '0')}.webp`;
+    
+    // Animation object
+    const obj = { frame: 0 };
+    
+    // Touch settings
+    const TOUCH_CONFIG = {
+        sensitivity: 0.1,
+        resistance: 0.65,
+        momentum: 0.98,
+        minVelocity: 0.2
+    };
 
-    // Initialize Flickity for mobile
-    const flickity = new window.Flickity(mobileCarousel, {
-        cellAlign: 'left',
-        contain: true,
-        wrapAround: true,
-        pageDots: true, // Enable page dots
-        prevNextButtons: false, // Disable arrow buttons
-        draggable: true, // Enable swipe
-        autoPlay: 8000, // 8 seconds autoplay
-        pauseAutoPlayOnHover: false,
-        percentPosition: false,
-        adaptiveHeight: true, // Allow height to adjust
-        setGallerySize: false, // Don't set fixed gallery size
-    });
+    // Get text content from sections
+    const textContent = Array.from(textSections).map(section => ({
+        title: section.querySelector('.section-title')?.textContent || 'Interactive Experience',
+        description: section.querySelector('.section-text')?.textContent || 'Scroll to explore the interactive experience.'
+    }));
 
-    let userPausedAutoPlay = false;
-    let resumeAutoPlayTimeout = null;
-
-    // Function to activate mobile section and sync animations
-    function activateMobileSection(index) {
-        // Remove active class from all mobile text sections
-        mobileTextSections.forEach(section => section.classList.remove('active'));
-        
-        // Add active class to current section
-        if (mobileTextSections[index]) {
-            mobileTextSections[index].classList.add('active');
-        }
-
-        // Play corresponding video
-        mobileVideos.forEach((video, i) => {
-            if (i === index && video.src) {
-                video.play().catch(error => {
-                    console.warn('Mobile video autoplay failed:', error);
-                });
-            } else {
-                video.pause();
-                video.currentTime = 0;
-            }
+    // Fallback if no sections
+    if (textContent.length === 0) {
+        textContent.push({
+            title: 'Interactive Experience',
+            description: 'Scroll to explore the interactive experience.'
         });
     }
 
-    // Listen for carousel changes
-    flickity.on('change', function(index) {
-        activateMobileSection(index);
-    });
+    let currentTextIndex = 0;
+    let touchStartY = 0;
+    let currentFrameIndex = 0;
+    let velocity = 0;
+    let isCoasting = false;
+    let momentumAnimation = null;
 
-    // Handle manual navigation (pause auto-play temporarily)
-    flickity.on('staticClick', function() {
-        // Pause autoplay temporarily
-        flickity.pausePlayer();
-        userPausedAutoPlay = true;
+    // Setup canvas
+    function setupCanvas() {
+        const context = canvas.getContext("2d");
+        canvas.width = 450;
+        canvas.height = 800;
+        canvas.style.width = "450px";
+        canvas.style.height = "800px";
+        context.imageSmoothingEnabled = false;
+        return context;
+    }
+
+    const context = setupCanvas();
+
+    // Preload images
+    function preloadImages() {
+        let imagesLoaded = 0;
         
-        // Clear any existing resume timeout
-        if (resumeAutoPlayTimeout) {
-            clearTimeout(resumeAutoPlayTimeout);
+        for (let i = 0; i < frameCount; i++) {
+            const img = new Image();
+            
+            img.onload = () => {
+                imagesLoaded++;
+                console.log(`Mobile: Loaded frame ${i + 1}/${frameCount}`);
+                
+                if (imagesLoaded === frameCount) {
+                    console.log('Mobile: All images loaded, rendering first frame');
+                    render();
+                }
+            };
+            
+            img.onerror = () => {
+                console.error(`Mobile: Failed to load frame ${i}: ${currentFrame(i)}`);
+                images[i] = null;
+                imagesLoaded++;
+                
+                if (imagesLoaded === frameCount) {
+                    render();
+                }
+            };
+            
+            img.src = currentFrame(i);
+            images[i] = img;
         }
+    }
+
+    // Render function
+    function render() {
+        let frameIndex = Math.round(obj.frame);
+        frameIndex = Math.max(0, Math.min(frameCount - 1, frameIndex));
         
-        // Resume autoplay after 3 seconds
-        resumeAutoPlayTimeout = setTimeout(() => {
-            if (userPausedAutoPlay) {
-                flickity.unpausePlayer();
-                userPausedAutoPlay = false;
+        const imageToShow = images[frameIndex];
+        if (imageToShow && imageToShow.complete && imageToShow.naturalWidth > 0) {
+            try {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(imageToShow, 0, 0, canvas.width, canvas.height);
+            } catch (error) {
+                console.error(`Mobile: Error drawing frame ${frameIndex}:`, error);
             }
-        }, 3000);
-    });
-
-    // Initialize - activate first section
-    activateMobileSection(0);
-
-    // Clean up mobile carousel when needed
-    block.mobileCarouselCleanup = () => {
-        if (resumeAutoPlayTimeout) {
-            clearTimeout(resumeAutoPlayTimeout);
         }
-        if (flickity) {
-            flickity.destroy();
+        
+        updateText();
+    }
+
+    // Update text based on progress
+    function updateText() {
+        const progress = obj.frame / (frameCount - 1);
+        const textIndex = Math.floor(progress * textContent.length);
+        
+        if (textIndex !== currentTextIndex && textContent[textIndex]) {
+            currentTextIndex = textIndex;
+            
+            if (textTitle && textDescription) {
+                gsap.to([textTitle, textDescription], {
+                    opacity: 0,
+                    duration: 0.2,
+                    onComplete: () => {
+                        textTitle.textContent = textContent[textIndex].title;
+                        textDescription.textContent = textContent[textIndex].description;
+                        gsap.to([textTitle, textDescription], { opacity: 1, duration: 0.2 });
+                    }
+                });
+            }
         }
-        userPausedAutoPlay = false;
-    };
+    }
+
+    // Touch controls
+    canvas.addEventListener("touchstart", (e) => {
+        touchStartY = e.touches[0].clientY;
+        currentFrameIndex = obj.frame;
+        
+        if (momentumAnimation) {
+            cancelAnimationFrame(momentumAnimation);
+            momentumAnimation = null;
+        }
+        isCoasting = false;
+        velocity = 0;
+    }, { passive: true });
+
+    canvas.addEventListener("touchmove", (e) => {
+        const touchY = e.touches[0].clientY;
+        const deltaY = touchStartY - touchY;
+        touchStartY = touchY;
+
+        const rawDelta = deltaY * TOUCH_CONFIG.sensitivity;
+        const resistedDelta = rawDelta * TOUCH_CONFIG.resistance;
+        
+        velocity = resistedDelta;
+        currentFrameIndex += resistedDelta;
+        currentFrameIndex = Math.max(0, Math.min(frameCount - 1, currentFrameIndex));
+
+        obj.frame = currentFrameIndex;
+        render();
+    }, { passive: true });
+
+    canvas.addEventListener("touchend", () => {
+        if (Math.abs(velocity) > TOUCH_CONFIG.minVelocity) {
+            startMomentumAnimation();
+        }
+    }, { passive: true });
+
+    // Momentum animation
+    function startMomentumAnimation() {
+        if (isCoasting) return;
+        
+        isCoasting = true;
+        
+        function animate() {
+            if (Math.abs(velocity) < TOUCH_CONFIG.minVelocity) {
+                isCoasting = false;
+                return;
+            }
+            
+            currentFrameIndex += velocity;
+            currentFrameIndex = Math.max(0, Math.min(frameCount - 1, currentFrameIndex));
+            
+            velocity *= TOUCH_CONFIG.momentum;
+            obj.frame = currentFrameIndex;
+            render();
+            
+            momentumAnimation = requestAnimationFrame(animate);
+        }
+        
+        animate();
+    }
+
+    // Initialize
+    preloadImages();
+    
+    console.log('Mobile sequence initialized');
 }

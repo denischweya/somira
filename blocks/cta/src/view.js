@@ -50,14 +50,3 @@ function initializeCTA(block) {
 		}
 	}
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.querySelector('.cta-link');
-    let angle = 0;
-    function rotate() {
-      angle = (angle + 1) % 360;
-      btn.style.setProperty('--angle', angle + 'deg');
-      requestAnimationFrame(rotate);
-    }
-    rotate();
-  });

@@ -7,7 +7,7 @@ Description: Somira emphasizes simplicity and adaptability. It offers flexible d
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 7.2
-Version: 1.2
+Version: 1.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: somira
@@ -18,7 +18,7 @@ Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, feature
  * Link styles
  * https://github.com/WordPress/gutenberg/issues/42319
  */
- a {
+a {
 	text-decoration-thickness: 1px !important;
 	text-underline-offset: .1em;
 }
@@ -103,9 +103,7 @@ h1, h2, h3, h4, h5, h6, blockquote, caption, figcaption, p {
 .tracking-wide {
 	letter-spacing: 0.025em;
 }
-body {
-	background-color: #F8F8F4;
-}
+
 /* Font smoothing for better rendering */
 body,
 .wp-site-blocks {
@@ -118,53 +116,7 @@ p,
 .wp-block-paragraph {
 	text-rendering: optimizeLegibility;
 }
-.free-shipping {
-	padding: 0;
-	height: 50px;
-}
-.somira-header {
-	height:80px;
-	display: flex;
-	position: sticky;
-	top: 0;
-	z-index: 9999; /* make sure it stays above other elements */
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* subtle shadow */
 
-}
-.admin-bar .somira-header {
-	top: 32px;
-  }
-@media (max-width:768px){
-	.admin-bar .somira-header {
-		top: 0px;
-	  }
-}
-.somira-header-inner {
-	max-width: 1530px !important;
-	max-width: 1530px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    width: 100%;
-}
-@media (max-width:768px){
-	.somira-header-inner {
-		padding: 0 1rem;
-	  }
-}
-
-.somira-header-inner p a {
-	transition: all 0.3s ease;
-}
-.somira-header-inner p a:hover {
-	text-decoration: none;
-	opacity: 0.7;
-}
-.header-button a {
-	transition: all 0.3s ease;
-}
-.header-button a:hover {
-	opacity: 0.8;
-}
 .expert-video {
 	max-height: 700px;
 	object-fit: contain;
@@ -179,20 +131,45 @@ p,
 .expert-video video:not(.playing) {
     cursor: pointer;
 }
-
-
-.expert figure.wp-block-image.size-full.is-resized {
-    border-radius: 8px;
-    overflow: hidden;
+.expert-video video:not(.playing)::-webkit-media-controls-panel {
+    display: none !important;
 }
-.expert .expert-small {
-	gap:24px !important;
+.expert-video video:not(.playing)::-webkit-media-controls {
+    display: none !important;
 }
-.expert .expert-left-column .expert-testimonial {
-	font-size: 24px;
-	font-weight: 600;
-	line-height: 40px;
-	margin-bottom: 39px;
+
+/* Custom play button */
+.expert-video .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.expert-video .play-button:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+.expert-video .play-button::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 4px;
+}
+.expert-video.playing .play-button {
+    display: none;
 }
 .content-align-center {
 	align-content: center;
@@ -231,22 +208,7 @@ p,
 	vertical-align: middle;
 }
 .data-driven {
-	border-radius: 40px;
-	position: relative;
-	background-size: 120% !important;
-}
-.data-driven:before {
-	content: "";
-	position: absolute;   /* Position inside wrapper */
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url(http://localhost:10104/wp-content/uploads/2025/09/texture.png);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	z-index: 0;  /* keep it behind content */
+	border-radius: 20px;
 }
 .data-driven .sub-heading {
 	max-width: 600px;
@@ -258,7 +220,6 @@ p,
 .data-driven .wp-block-columns .wp-block-column {
 	border-right: 1px solid #fff;
 	padding-bottom: 50px;
-	padding-right: 20px;
 }
 .data-driven .who-row {
 	margin-bottom: 1rem;
@@ -266,7 +227,7 @@ p,
 .data-driven .who-footer {
 	background: #fff;
 	max-width: 100%;
-} 
+}
 .data-driven .wp-block-image {
 	display: flex;
 }
@@ -279,30 +240,20 @@ p,
 }
 .logos .wp-block-columns {
 	justify-content: center;
-} 
-.logos .wp-block-columns img {
-	opacity: 0.65;
 }
 .wp-block-column.expert-video.is-layout-flow.wp-block-column-is-layout-flow {
     border-radius: 20px;
     overflow: hidden;
 }
-
 footer {
 	background-color: var(--wp--preset--color--night);
 	margin-top: 0;
 	margin-block-start: 0 !important;
-	overflow: hidden;
 }
 footer .wp-block-group {
 	max-width: 1440px;
 	width: 100%;
 	margin: 0 auto;
-	position: relative;
-	border-bottom: none !important;
-}
-footer .wp-block-group nav a:hover span {
-	color: #A3A3A3 !important;
 }
 footer input.wpcf7-form-control.wpcf7-email.wpcf7-validates-as-required.wpcf7-text.wpcf7-validates-as-email {
     padding: 1rem;
@@ -311,7 +262,6 @@ footer input.wpcf7-form-control.wpcf7-email.wpcf7-validates-as-required.wpcf7-te
     border: none;
     color: #717171;
     font-size: 1rem;
-	max-width: 90%;
 }
 footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
     border: 2px solid var(--wp--preset--color--sand);
@@ -323,17 +273,7 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
     color: var(--wp--preset--color--sand);
 }
 .wp-block-contact-form-7-contact-form-selector {
-	display: flex;
-	flex-direction: column;
-
-}
-.wp-block-group.is-content-justification-center.is-nowrap.is-layout-flex.wp-container-core-group-is-layout-8ea087f3.wp-block-group-is-layout-flex::after {
-    content: "";
-    position: absolute;
-    width: 131%;
-    height: 1px;
-    background: var(--wp--preset--color--root);
-	bottom: 0;
+    overflow: hidden;
 }
 @media (max-width:768px){
 	.features,
@@ -341,12 +281,6 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
 	.data-driven,
 	.blog {
 		padding: 16px;
-	}
-	.logos .wp-block-columns {
-		flex-wrap: nowrap !important;
-	}
-	.features {
-		display: none;
 	}
 	.data-driven .wp-block-column {
 		text-align: center;
@@ -379,8 +313,7 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
 
 /* Custom Search Form Styles */
 .custom-search {
-    max-width: 1270px;
-	width: 100%;
+    max-width: 800px;
     margin: 20px auto;
 }
 
@@ -436,12 +369,8 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
 	max-width: 1200px !important;
 }
 .hustle-layout .hustle-title {
-	font-size: 48px !important;
 	line-height: 60px !important;
-	color: #282828 !important;
-	font-weight: 800 !important;
 	font-family: var(--wp--preset--font-family--manrope) !important;
-	max-width: 280px !important;
 }
 .hustle-group-content ul li {
 	color:  #282828;
@@ -456,72 +385,6 @@ footer input.wpcf7-form-control.wpcf7-submit.has-spinner {
 	margin-bottom: 0rem !important;
 }
 .hustle-layout-content .hustle-content {
-
+	margin: 100px !important;
 	margin-bottom: 0 !important;
 }
-
-.custom-icon-list {
-	list-style: none !important;
-	padding-left: 0 !important;
-	margin: 0 !important;
-  }
-  
-  .custom-icon-list li {
-	position: relative !important;
-	padding-left: 36px !important; /* space for the icon */
-	margin-bottom: 12px !important;
-	line-height: 1.4 !important;
-  }
-  
-  /* First item icon */
-  .custom-icon-list li:nth-child(1)::before {
-	content: "" !important;
-	position: absolute !important;
-	left: 0 !important;
-	top: 50% !important;
-	transform: translateY(-50%) !important;
-	width: 24px !important;
-	height: 24px !important;
-	background: url("http://somira.co/wp-content/uploads/2025/09/editor_choice.svg") no-repeat center/contain !important;
-  }
-  
-  /* Second item icon */
-  .custom-icon-list li:nth-child(2)::before {
-	content: "" !important;
-	position: absolute !important;
-	left: 0 !important;
-	top: 50% !important;
-	transform: translateY(-50%) !important;
-	width: 24px !important;
-	height: 24px !important;
-	background: url("http://somira.co/wp-content/uploads/2025/09/carry_on_bag.svg") no-repeat center/contain !important
-  }
-  
-  /* Third item icon */
-  .custom-icon-list li:nth-child(3)::before {
-	content: "" !important;
-	position: absolute !important;
-	left: 0 !important;
-	top: 50% !important;
-	transform: translateY(-50%) !important;
-	width: 24px !important;
-	height: 24px !important;
-	background: url("http://somira.co/wp-content/uploads/2025/09/recenter.svg") no-repeat center/contain !important;
-  }
-  
-span.custom-link-prefix {
-	display: inline;
-	font-size: 24px;
-	/* text-decoration: underline; */
-	vertical-align: middle;
-}
-.scroll-video-wrapper { overflow:hidden;}
-.data-driven {
-	max-width: 1530px;
-	width: 100%;
-	padding-left: 54px;
-	padding-right: 54px;
-}
-.data-driven .wp-block-columns .wp-block-column:last-of-type { 
-	border: none;
- }

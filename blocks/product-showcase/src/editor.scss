@@ -28,29 +28,6 @@
 				gap: 1.5rem;
 			}
 		}
-
-		.guarantee-section {
-			grid-column: 1 / -1;
-			background: #fff;
-			width: 100%;
-			padding: 20px;
-			display: flex;
-			align-items: center;
-			gap: 1rem;
-			margin-bottom: 1.5rem;
-			border: 1px solid #ddd;
-			border-radius: 8px;
-			
-			svg {
-				flex-shrink: 0;
-			}
-			
-			span {
-				font-size: 14px;
-				font-weight: 600;
-				color: #282828;
-			}
-		}
 		
 		.product-image-column {
 			display: flex;
@@ -191,107 +168,18 @@
 			display: flex;
 			flex-direction: column;
 			gap: 0.5rem;
-			position: relative;
 			
 			label {
 				font-size: 13px;
 				font-weight: 600;
 				color: #202020;
 			}
-		}
-
-		.custom-select {
-			position: relative;
-			width: 100%;
-		}
-
-		.custom-select-trigger {
-			display: flex;
-			align-items: center;
-			padding: 12px;
-			border: 1px solid #ddd;
-			border-radius: 6px;
-			background: #fff;
-			cursor: pointer;
-			transition: border-color 0.3s ease;
-			gap: 8px;
 			
-			&:hover {
-				border-color: #202020;
-			}
-			
-			.plug-icon {
-				flex-shrink: 0;
-				width: 12px;
-				height: 18px;
-			}
-			
-			.selected-value {
-				flex: 1;
+			.components-select-control__input {
+				padding: 8px 12px;
+				border: 1px solid #ddd;
+				border-radius: 6px;
 				font-size: 13px;
-				color: #202020;
-				font-weight: 400;
-			}
-			
-			.dropdown-arrow {
-				flex-shrink: 0;
-				width: 16px;
-				height: 16px;
-				transition: transform 0.3s ease;
-			}
-		}
-
-		.custom-select.open {
-			.custom-select-trigger .dropdown-arrow {
-				transform: rotate(180deg);
-			}
-		}
-
-		.custom-select-options {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			right: 0;
-			background: #fff;
-			border: 1px solid #ddd;
-			border-top: none;
-			border-radius: 0 0 6px 6px;
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			z-index: 1000;
-			max-height: 150px;
-			overflow-y: auto;
-			opacity: 0;
-			visibility: hidden;
-			transform: translateY(-10px);
-			transition: all 0.3s ease;
-		}
-
-		.custom-select.open .custom-select-options {
-			opacity: 1;
-			visibility: visible;
-			transform: translateY(0);
-		}
-
-		.custom-select-option {
-			padding: 8px 12px;
-			cursor: pointer;
-			font-size: 13px;
-			color: #202020;
-			transition: background-color 0.2s ease;
-			
-			&:hover {
-				background-color: #f8f9fa;
-			}
-			
-			&.selected {
-				background-color: #e9ecef;
-				font-weight: 600;
-			}
-			
-			&:last-child {
-				border-radius: 0 0 4px 4px;
 			}
 		}
 		
