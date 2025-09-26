@@ -37,6 +37,7 @@
 			@media (max-width: 768px) {
 				font-size: 24px;
 				font-weight: 700;
+				text-align: left;
 			}
 		}
 		
@@ -72,6 +73,7 @@
 				
 				@media (max-width: 768px) {
 					padding: 1.25rem;
+					padding-left: 0;
 				}
 				
 				&:hover {

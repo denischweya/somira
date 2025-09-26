@@ -134,6 +134,11 @@ p,
 .admin-bar .somira-header {
 	top: 32px;
   }
+@media (max-width:768px){
+	.admin-bar .somira-header {
+		top: 0px;
+	  }
+}
 .somira-header-inner {
 	max-width: 1530px !important;
 	max-width: 1530px !important;
@@ -141,6 +146,12 @@ p,
     padding-bottom: 0 !important;
     width: 100%;
 }
+@media (max-width:768px){
+	.somira-header-inner {
+		padding: 0 1rem;
+	  }
+}
+
 .somira-header-inner p a {
 	transition: all 0.3s ease;
 }

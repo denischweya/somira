@@ -40,7 +40,7 @@
 		padding-bottom: 0;
 		
 		@media (max-width: 768px) {
-			padding: 2rem 1.5rem;
+			padding: 2rem 1.5rem 0;
 		}
 	}
 	
@@ -73,6 +73,9 @@
 		
 		svg {
 			flex-shrink: 0;
+			@media (max-width: 768px) {
+				height: 16px;
+			}
 		}
 		
 		span {
@@ -80,12 +83,17 @@
 			font-weight: 700;
 			color: #282828;
 			text-decoration: underline;
+			@media (max-width: 768px) {
+				font-size: 14px;
+			}
 		}
 		
 		@media (max-width: 768px) {
 			padding: 20px;
 			font-size: 14px;
 			grid-row: 3;
+			transform: translateX(-2rem);
+			gap:0;
 		}
 	}
 	
