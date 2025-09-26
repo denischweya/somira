@@ -71,5 +71,5 @@
 	"editorScript": "file:../dist/index.js",
 	"editorStyle": "file:../dist/index.css",
 	"style": "file:../dist/style-index.css",
-	"viewScript": "file:../dist/view.js"
+	"viewScript": "file:./view.js"
 }

@@ -199,7 +199,7 @@
 
 @media (max-width: 768px) {
 	.wp-block-somira-hero {
-		height: 100vh;
+		height: 540px;
 	}
 	
 	.somira-hero-container {
@@ -214,6 +214,7 @@
 		min-width: 0;   /* allows flex items to shrink */
 		max-width: 100%; /* prevents overflowing horizontally */
 		flex-shrink: 1;  /* shrink when needed */
+		top: 11rem;
 	}
 	
 	.somira-hero-title {

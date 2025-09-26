@@ -1,1 +1,56 @@
-.wp-block-somira-custom-link{display:flex;justify-content:center;margin:1rem 0}.wp-block-somira-custom-link .custom-link{align-items:center;color:#282828;display:inline-flex;font-size:16px;font-weight:500;gap:8px;text-decoration:none;transition:all .3s ease;vertical-align:middle}.wp-block-somira-custom-link .custom-link:hover{transform:translateX(-2px)}.wp-block-somira-custom-link .custom-link:focus{outline:2px solid #fff5d9;outline-offset:2px}.wp-block-somira-custom-link .custom-link .custom-link-text{display:inline;font-size:24px;text-decoration:underline;vertical-align:middle}.wp-block-somira-custom-link .custom-link .custom-link-arrow{background-image:url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjUzMDMgNi41MzAzM0MxNS44MjMyIDYuMjM3NDQgMTUuODIzMiA1Ljc2MjU2IDE1LjUzMDMgNS40Njk2N0wxMC43NTc0IDAuNjk2N0MxMC40NjQ1IDAuNDAzODA3IDkuOTg5NTkgMC40MDM4MDcgOS42OTY3IDAuNjk2N0M5LjQwMzgxIDAuOTg5NTkzIDkuNDAzODEgMS40NjQ0NyA5LjY5NjcgMS43NTczNkwxMy45MzkzIDZMOS42OTY3IDEwLjI0MjZDOS40MDM4MSAxMC41MzU1IDkuNDAzODEgMTEuMDEwNCA5LjY5NjcgMTEuMzAzM0M5Ljk4OTU5IDExLjU5NjIgMTAuNDY0NSAxMS41OTYyIDEwLjc1NzQgMTEuMzAzM0wxNS41MzAzIDYuNTMwMzNaTTAgNkwtNi41NTY3MWUtMDggNi43NUwxNSA2Ljc1TDE1IDZMMTUgNS4yNUw2LjU1NjcxZS0wOCA1LjI1TDAgNloiIGZpbGw9IiMyODI4MjgiLz4KPC9zdmc+Cg==);background-position:50%;background-repeat:no-repeat;background-size:contain;display:inline-block;flex-shrink:0;height:16px;margin-right:4px;transition:transform .3s ease;vertical-align:middle;width:30px}.wp-block-somira-custom-link .custom-link:hover .custom-link-arrow{transform:translateX(-3px)}
+/*!**********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/custom-link/src/style.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Frontend styles for the Custom Link block.
+ */
+.wp-block-somira-custom-link {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+.wp-block-somira-custom-link .custom-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #282828;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+.wp-block-somira-custom-link .custom-link:focus {
+  outline: 2px solid #FFF5D9;
+  outline-offset: 2px;
+}
+.wp-block-somira-custom-link .custom-link .custom-link-prefix:hover {
+  transform: translateX(0px);
+}
+.wp-block-somira-custom-link .custom-link .custom-link-text {
+  display: inline;
+  vertical-align: middle;
+  font-size: 24px;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+.wp-block-somira-custom-link .custom-link .custom-link-text:hover {
+  transform: translateX(-2px);
+}
+.wp-block-somira-custom-link .custom-link .custom-link-arrow {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-right: 4px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTIiIHZpZXdCb3g9IjAgMCAxNiAxMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjUzMDMgNi41MzAzM0MxNS44MjMyIDYuMjM3NDQgMTUuODIzMiA1Ljc2MjU2IDE1LjUzMDMgNS40Njk2N0wxMC43NTc0IDAuNjk2N0MxMC40NjQ1IDAuNDAzODA3IDkuOTg5NTkgMC40MDM4MDcgOS42OTY3IDAuNjk2N0M5LjQwMzgxIDAuOTg5NTkzIDkuNDAzODEgMS40NjQ0NyA5LjY5NjcgMS43NTczNkwxMy45MzkzIDZMOS42OTY3IDEwLjI0MjZDOS40MDM4MSAxMC41MzU1IDkuNDAzODEgMTEuMDEwNCA5LjY5NjcgMTEuMzAzM0M5Ljk4OTU5IDExLjU5NjIgMTAuNDY0NSAxMS41OTYyIDEwLjc1NzQgMTEuMzAzM0wxNS41MzAzIDYuNTMwMzNaTTAgNkwtNi41NTY3MWUtMDggNi43NUwxNSA2Ljc1TDE1IDZMMTUgNS4yNUw2LjU1NjcxZS0wOCA1LjI1TDAgNloiIGZpbGw9IiMyODI4MjgiLz4KPC9zdmc+Cg==);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+.wp-block-somira-custom-link .custom-link:hover .custom-link-arrow {
+  transform: translateX(-3px);
+}

@@ -34,37 +34,6 @@ export default function save({ attributes }) {
 			>
 				<div className="product-showcase-container">
 					<div className="product-showcase-content">
-						<div className="testimonials-section">
-							<div className="testimonial-avatars">
-								{testimonialImages.map((image, index) => (
-									<div key={index} className="testimonial-avatar">
-										{image && (
-											<img 
-												src={image.url} 
-												alt={`Customer ${index + 1}`} 
-											/>
-										)}
-									</div>
-								))}
-							</div>
-							<span className="testimonials-text">
-								Loved by {customerCount} Customers
-							</span>
-						</div>
-
-						<div className="product-title-wrapper">
-							<RichText.Content
-								tagName="h2"
-								className="product-title"
-								value={title}
-							/>
-						</div>
-
-						<div className="pricing-section">
-							<span className="current-price">{priceCurrent}</span>
-							<span className="previous-price">{pricePrevious}</span>
-						</div>
-
 						<div className="product-image-column">
 							{productImage && (
 								<img 
@@ -75,7 +44,39 @@ export default function save({ attributes }) {
 							)}
 						</div>
 
-						<form className="product-form" data-stripe-url={stripeUrl}>
+						<div className="product-details-column">
+							<div className="testimonials-section">
+								<div className="testimonial-avatars">
+									{testimonialImages.map((image, index) => (
+										<div key={index} className="testimonial-avatar">
+											{image && (
+												<img 
+													src={image.url} 
+													alt={`Customer ${index + 1}`} 
+												/>
+											)}
+										</div>
+									))}
+								</div>
+								<span className="testimonials-text">
+									Loved by {customerCount} Customers
+								</span>
+							</div>
+
+							<div className="product-title-wrapper">
+								<RichText.Content
+									tagName="h2"
+									className="product-title"
+									value={title}
+								/>
+							</div>
+
+							<div className="pricing-section">
+								<span className="current-price">{priceCurrent}</span>
+								<span className="previous-price">{pricePrevious}</span>
+							</div>
+
+							<form className="product-form" data-stripe-url={stripeUrl}>
 								<div className="form-row">
 									<div className="form-field plug-type-field">
 										<label htmlFor="plug-type">Plug Type:</label>
@@ -156,6 +157,7 @@ export default function save({ attributes }) {
 									</button>
 								</div>
 							</form>
+						</div>
 
 						<div className="guarantee-section">
 							<svg width="33" height="34" viewBox="0 0 33 34" fill="none" xmlns="http://www.w3.org/2000/svg">

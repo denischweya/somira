@@ -13,14 +13,29 @@ function initEnhancedVideoBlocks() {
     console.log('Enhanced Video Script: Initializing blocks at ' + new Date().toISOString());
     console.log('Document ready state: ' + document.readyState);
     
-    const blocks = document.querySelectorAll('.wp-block-somira-enhanced-video');
-    console.log('Enhanced Video Script: Found ' + blocks.length + ' blocks');
+    // Try multiple selectors to find the blocks
+    let blocks = document.querySelectorAll('.wp-block-somira-enhanced-video');
+    console.log('Enhanced Video Script: Found ' + blocks.length + ' blocks with .wp-block-somira-enhanced-video');
     
     if (blocks.length === 0) {
-        console.warn('Enhanced Video Script: No blocks found. HTML structure may not be rendered yet.');
-        // Try to find alternative selectors
-        const altBlocks = document.querySelectorAll('[class*="enhanced-video"]');
-        console.log('Found ' + altBlocks.length + ' elements with enhanced-video in class name');
+        // Try alternative selectors
+        blocks = document.querySelectorAll('[data-type="somira/enhanced-video"]');
+        console.log('Found ' + blocks.length + ' blocks with data-type="somira/enhanced-video"');
+    }
+    
+    if (blocks.length === 0) {
+        blocks = document.querySelectorAll('[class*="enhanced-video"]');
+        console.log('Found ' + blocks.length + ' elements with enhanced-video in class name');
+    }
+    
+    if (blocks.length === 0) {
+        // Debug: Show all possible video-related elements
+        console.warn('Enhanced Video Script: No blocks found. Debugging...');
+        const allVideoElements = document.querySelectorAll('video, [class*="video"], [class*="enhanced"]');
+        console.log('All video-related elements found:', allVideoElements.length);
+        allVideoElements.forEach((el, i) => {
+            console.log(`Element ${i+1}:`, el.className, el.outerHTML.substring(0, 100));
+        });
         return;
     }
     
@@ -90,12 +105,24 @@ function initEnhancedVideoBlocks() {
                 zIndex: modal.style.zIndex
             });
             
+            // Auto-play the video when modal opens
+            if (video) {
+                setTimeout(function() {
+                    video.play().then(function() {
+                        console.log('Video auto-play started successfully');
+                    }).catch(function(error) {
+                        console.log('Video auto-play prevented by browser:', error);
+                        // Auto-play was prevented, user will need to click play manually
+                    });
+                }, 200); // Small delay to ensure modal is fully visible
+            }
+            
             // Focus close button if available
             if (closeButton) {
                 setTimeout(function() {
                     closeButton.focus();
                     console.log('Focus set to close button');
-                }, 100);
+                }, 300);
             }
         }
         

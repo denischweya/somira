@@ -1,1 +1,138 @@
-.wp-block-somira-carousel{margin:2rem 0;margin-top:clamp(25px,25px + 94*(100vw - 768px)/256,119px)!important}.wp-block-somira-carousel .carousel-header{margin-bottom:2rem;text-align:center}.wp-block-somira-carousel .carousel-header .carousel-eyebrow{align-items:center;color:#666;display:flex;font-size:.875rem;gap:.5rem;justify-content:center;margin-bottom:.5rem}.wp-block-somira-carousel .carousel-header .carousel-eyebrow .star-rating{display:flex;gap:2px}.wp-block-somira-carousel .carousel-header .carousel-eyebrow .star-rating .star{color:#ddd;font-size:1rem}.wp-block-somira-carousel .carousel-header .carousel-eyebrow .star-rating .star.filled{color:gold}.wp-block-somira-carousel .carousel-header .carousel-title{font-size:2rem;font-weight:700;margin:0}.wp-block-somira-carousel .carousel-container{overflow:hidden;position:relative}.wp-block-somira-carousel .carousel-container .video-card{flex-shrink:0;margin-right:1rem;width:339px}.wp-block-somira-carousel .carousel-container .video-card .video-container{background:#000;border-radius:8px;overflow:hidden;position:relative}.wp-block-somira-carousel .carousel-container .video-card .video-container .video-element{display:block;height:504px;-o-object-fit:cover;object-fit:cover;width:339px}.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay{align-items:center;background:none;background-color:rgba(0,0,0,.65);border:none;border-radius:50%;cursor:pointer;display:flex;height:50px;justify-content:center;left:50%;padding:10px;position:absolute;top:50%;transform:translate(-50%,-50%);transition:all .3s ease;width:50px}.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay:hover{transform:translate(-50%,-50%) scale(1.1)}.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay svg{filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));height:28px;width:28px}.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay.is-pause{opacity:0}.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay.is-pause:hover{opacity:1}.wp-block-somira-carousel .carousel-navigation{display:flex;gap:1rem;justify-content:center;margin-top:2rem}.wp-block-somira-carousel .carousel-navigation .carousel-next,.wp-block-somira-carousel .carousel-navigation .carousel-prev{align-items:center;background:#282828;border:none;border-radius:50%;color:#fff;cursor:pointer;display:flex;height:50px;justify-content:center;transition:all .3s ease;width:50px}.wp-block-somira-carousel .carousel-navigation .carousel-next:hover,.wp-block-somira-carousel .carousel-navigation .carousel-prev:hover{background:#282828;opacity:.8}.wp-block-somira-carousel .carousel-navigation .carousel-next:hover:not(:disabled),.wp-block-somira-carousel .carousel-navigation .carousel-prev:hover:not(:disabled){background:#282828}.wp-block-somira-carousel .carousel-navigation .carousel-next:disabled,.wp-block-somira-carousel .carousel-navigation .carousel-prev:disabled{background:#ccc;cursor:not-allowed;opacity:.6}.wp-block-somira-carousel .carousel-navigation .carousel-next svg,.wp-block-somira-carousel .carousel-navigation .carousel-prev svg{height:15px;width:10px}.wp-block-somira-carousel .carousel-navigation .carousel-prev svg{transform:rotate(180deg)}
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/carousel/src/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Frontend styles for the carousel block.
+ */
+.wp-block-somira-carousel {
+  margin: 2rem 0;
+  margin-top: clamp(25px, 25px + 94 * (100vw - 768px) / 256, 119px) !important;
+}
+.wp-block-somira-carousel .carousel-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.wp-block-somira-carousel .carousel-header .carousel-eyebrow {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.wp-block-somira-carousel .carousel-header .carousel-eyebrow .star-rating {
+  display: flex;
+  gap: 2px;
+}
+.wp-block-somira-carousel .carousel-header .carousel-eyebrow .star-rating .star {
+  color: #ddd;
+  font-size: 1rem;
+}
+.wp-block-somira-carousel .carousel-header .carousel-eyebrow .star-rating .star.filled {
+  color: #ffd700;
+}
+.wp-block-somira-carousel .carousel-header .carousel-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+.wp-block-somira-carousel .carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+.wp-block-somira-carousel .carousel-container .video-card {
+  width: 339px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container .video-element {
+  width: 339px;
+  height: 504px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay svg {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay.is-pause {
+  opacity: 0;
+}
+.wp-block-somira-carousel .carousel-container .video-card .video-container .play-button-overlay.is-pause:hover {
+  opacity: 1;
+}
+.wp-block-somira-carousel .carousel-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.wp-block-somira-carousel .carousel-navigation .carousel-prev,
+.wp-block-somira-carousel .carousel-navigation .carousel-next {
+  background: #282828;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.wp-block-somira-carousel .carousel-navigation .carousel-prev:hover,
+.wp-block-somira-carousel .carousel-navigation .carousel-next:hover {
+  background: #282828;
+  opacity: 0.8;
+}
+.wp-block-somira-carousel .carousel-navigation .carousel-prev:hover:not(:disabled),
+.wp-block-somira-carousel .carousel-navigation .carousel-next:hover:not(:disabled) {
+  background: #282828;
+}
+.wp-block-somira-carousel .carousel-navigation .carousel-prev:disabled,
+.wp-block-somira-carousel .carousel-navigation .carousel-next:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.wp-block-somira-carousel .carousel-navigation .carousel-prev svg,
+.wp-block-somira-carousel .carousel-navigation .carousel-next svg {
+  width: 10px;
+  height: 15px;
+}
+.wp-block-somira-carousel .carousel-navigation .carousel-prev svg {
+  transform: rotate(180deg);
+}
+
+/*# sourceMappingURL=style-index.css.map*/

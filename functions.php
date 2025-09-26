@@ -52,12 +52,12 @@ if (! function_exists('somira_enqueue_styles')) :
      */
     function somira_enqueue_styles()
     {
-wp_enqueue_style(
-  'somira-style',
-  get_stylesheet_uri(),
-  [],
-  filemtime( get_stylesheet_directory() . '/style.css' )
-);
+        wp_enqueue_style(
+            'somira-style',
+            get_stylesheet_uri(),
+            [],
+            filemtime(get_stylesheet_directory() . '/style.css')
+        );
     }
 endif;
 add_action('wp_enqueue_scripts', 'somira_enqueue_styles');
@@ -328,7 +328,7 @@ function allow_video_upload($mimes)
 {
     $mimes['mp4']  = 'video/mp4';
 
-$mimes['m4v']  = 'video/mp4';
+    $mimes['m4v']  = 'video/mp4';
     $mimes['mov']  = 'video/quicktime';
     $mimes['wmv']  = 'video/x-ms-wmv';
     $mimes['avi']  = 'video/avi';
@@ -396,9 +396,9 @@ if (! function_exists('somira_enqueue_enhanced_video_assets')) :
         if (has_block('somira/enhanced-video')) {
             wp_enqueue_script(
                 'somira-enhanced-video',
-                get_template_directory_uri() . '/blocks/enhanced-video/dist/view.js',
+                get_template_directory_uri() . '/blocks/enhanced-video/src/view.js',
                 array(),
-                filemtime(get_template_directory() . '/blocks/enhanced-video/dist/view.js'),
+                filemtime(get_template_directory() . '/blocks/enhanced-video/src/view.js'),
                 true
             );
             

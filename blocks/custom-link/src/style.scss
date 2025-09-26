@@ -17,22 +17,28 @@
 		font-size: 16px;
 		transition: all 0.3s ease;
 		vertical-align: middle;
-		
-		&:hover {
-			
-			transform: translateX(2px);
-		}
-		
+		transition: all 0.3s ease;
+
 		&:focus {
 			outline: 2px solid #FFF5D9;
 			outline-offset: 2px;
 		}
-		
+		.custom-link-prefix {
+			&:hover {
+				transform: translateX(0px);
+			}
+		}
 		.custom-link-text {
 			display: inline;
 			vertical-align: middle;
 			font-size: 24px;
 			text-decoration: underline;
+			transition: all 0.3s ease;
+					
+			&:hover {		
+				transform: translateX(2px);
+			}
+		
 		}
 		
 		.custom-link-arrow {

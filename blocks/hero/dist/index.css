@@ -1,1 +1,93 @@
-.wp-block-somira-hero{background-color:#c8ae99;border:2px dashed #ccc;height:828px;overflow:hidden;position:relative;width:100%}.wp-block-somira-hero .somira-hero-container{align-items:center;display:flex;height:828px;justify-content:center;position:relative;width:100%}.wp-block-somira-hero .somira-hero-video{height:100%;left:0;-o-object-fit:cover;object-fit:cover;position:absolute;top:0;width:100%;z-index:1}.wp-block-somira-hero .somira-hero-content{align-items:flex-start;backdrop-filter:blur(10px);background:rgba(0,0,0,.1);border-radius:12px;box-sizing:border-box;display:flex;flex-direction:column;flex-shrink:0;gap:30px;height:380px;justify-content:center;padding:60px;position:relative;width:750px;z-index:2}.wp-block-somira-hero .somira-hero-title{color:#fff!important;font-size:48px!important;font-weight:700!important;line-height:1.2!important;margin:0!important;text-shadow:0 2px 4px rgba(0,0,0,.3)}.wp-block-somira-hero .somira-hero-text{color:#fff!important;font-size:20px!important;font-weight:400!important;line-height:1.5!important;margin:0!important;text-shadow:0 1px 2px rgba(0,0,0,.3)}.wp-block-somira-hero .somira-hero-button{align-items:center;background:var(--wp--preset--color--white-sand,#fffefd);border:none;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,.15);color:var(--wp--preset--color--night,#282828);cursor:pointer;display:flex;flex-shrink:0;font-size:16px;font-weight:600;gap:14px;height:60px;justify-content:center;min-width:140px;padding:16px 28px;text-decoration:none;transition:all .3s ease}.wp-block-somira-hero .somira-hero-button:hover{background:var(--wp--preset--color--sand,#f8f7f3);box-shadow:0 6px 16px rgba(0,0,0,.2);transform:translateY(-2px)}
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/hero/src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Hero Block Editor Styles
+ * Applied only in the block editor.
+ */
+.wp-block-somira-hero {
+  position: relative;
+  overflow: hidden;
+  height: 828px;
+  width: 100%;
+  background-color: #C8AE99;
+  border: 2px dashed #ccc;
+}
+.wp-block-somira-hero .somira-hero-container {
+  position: relative;
+  width: 100%;
+  height: 828px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wp-block-somira-hero .somira-hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+.wp-block-somira-hero .somira-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 750px;
+  height: 380px;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+.wp-block-somira-hero .somira-hero-title {
+  font-size: 48px !important;
+  font-weight: 700 !important;
+  color: white !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.wp-block-somira-hero .somira-hero-text {
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  color: white !important;
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.wp-block-somira-hero .somira-hero-button {
+  display: flex;
+  height: 60px;
+  min-width: 140px;
+  padding: 16px 28px;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  background: var(--wp--preset--color--white-sand, #FFFEFD);
+  color: var(--wp--preset--color--night, #282828);
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.wp-block-somira-hero .somira-hero-button:hover {
+  background: var(--wp--preset--color--sand, #F8F7F3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=index.css.map*/

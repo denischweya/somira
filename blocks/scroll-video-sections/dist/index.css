@@ -1,1 +1,191 @@
-.wp-block-somira-scroll-video-sections .scroll-video-editor{background:#fafafa;border:2px dashed #ccc;border-radius:12px;padding:2rem}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header{border-bottom:1px solid #ddd;margin-bottom:3rem;padding-bottom:2rem;text-align:center}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-title{color:#202020;font-size:2.5rem;font-weight:800;margin:0 0 1rem}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-title[data-is-placeholder-visible=true]{color:#999}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-subtitle{color:#666;font-size:1.2rem;margin:0}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-subtitle[data-is-placeholder-visible=true]{color:#999}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .components-placeholder{background:#fff;border:1px dashed #ddd;border-radius:8px;padding:3rem;text-align:center}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid{display:grid;gap:2rem;grid-template-columns:1fr 1fr}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid h3{border-bottom:2px solid #e0e0e0;color:#202020;font-size:1.2rem;font-weight:600;margin:0 0 1rem;padding-bottom:.5rem;text-align:center}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview{transition:all .3s ease}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-2px)}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview.active{background-color:#e3f2fd!important;border-color:#007cba!important}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview h4{color:#202020;font-weight:600}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview p{line-height:1.5}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview{transition:all .3s ease}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview:hover{box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-2px)}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview video{border-radius:4px;display:block}.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview div{font-style:italic}@media(max-width:768px){.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid{gap:1.5rem;grid-template-columns:1fr}}.wp-block-somira-scroll-video-sections .components-panel__body .components-card{transition:all .3s ease}.wp-block-somira-scroll-video-sections .components-panel__body .components-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.1)}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__header h4{color:#202020;font-weight:600}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-text-control__input{border:1px solid #ddd;border-radius:4px;transition:border-color .2s ease}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-text-control__input:focus{border-color:#007cba;box-shadow:0 0 0 1px #007cba}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button{border-radius:4px;transition:all .2s ease}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-primary{background:#007cba;border-color:#007cba}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-primary:hover{background:#005a87;border-color:#005a87}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-secondary{border:1px solid #007cba;color:#007cba}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-secondary:hover{background:#007cba;color:#fff}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-destructive{border-color:#cc1818;color:#cc1818}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-destructive:hover{background:#cc1818;color:#fff}.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body small{color:#666;font-size:.85rem}.wp-block-somira-scroll-video-sections .editor-loading{align-items:center;color:#666;display:flex;font-style:italic;justify-content:center;padding:2rem}.wp-block-somira-scroll-video-sections .editor-loading:before{animation:editor-spin 1s linear infinite;border:2px solid #ddd;border-radius:50%;border-top-color:#007cba;content:"";height:20px;margin-right:.5rem;width:20px}@keyframes editor-spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.wp-block-somira-scroll-video-sections .editor-error{background:#fee;border:1px solid #fcc;border-radius:4px;color:#c33;font-size:.9rem;margin:1rem 0;padding:1rem}.wp-block-somira-scroll-video-sections .editor-success{background:#efe;border:1px solid #cfc;border-radius:4px;color:#363;font-size:.9rem;margin:1rem 0;padding:1rem}
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/scroll-video-sections/src/editor.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Editor styles for the Scroll Video Sections block.
+ */
+.wp-block-somira-scroll-video-sections .scroll-video-editor {
+  padding: 2rem;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background: #fafafa;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: #202020;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-title[data-is-placeholder-visible=true] {
+  color: #999;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-subtitle {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #666;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-header .block-subtitle[data-is-placeholder-visible=true] {
+  color: #999;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .components-placeholder {
+  border: 1px dashed #ddd;
+  background: #fff;
+  border-radius: 8px;
+  padding: 3rem;
+  text-align: center;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #202020;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview {
+  transition: all 0.3s ease;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview.active {
+  border-color: #007cba !important;
+  background-color: #e3f2fd !important;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview h4 {
+  color: #202020;
+  font-weight: 600;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .sections-column .section-preview p {
+  line-height: 1.5;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview {
+  transition: all 0.3s ease;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview video {
+  display: block;
+  border-radius: 4px;
+}
+.wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid .videos-column .video-preview div {
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .wp-block-somira-scroll-video-sections .scroll-video-editor .editor-preview .sections-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card {
+  transition: all 0.3s ease;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__header h4 {
+  font-weight: 600;
+  color: #202020;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-text-control__input {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  transition: border-color 0.2s ease;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-text-control__input:focus {
+  border-color: #007cba;
+  box-shadow: 0 0 0 1px #007cba;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button {
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-primary {
+  background: #007cba;
+  border-color: #007cba;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-primary:hover {
+  background: #005a87;
+  border-color: #005a87;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-secondary {
+  border: 1px solid #007cba;
+  color: #007cba;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-secondary:hover {
+  background: #007cba;
+  color: white;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-destructive {
+  color: #cc1818;
+  border-color: #cc1818;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body .components-button.is-destructive:hover {
+  background: #cc1818;
+  color: white;
+}
+.wp-block-somira-scroll-video-sections .components-panel__body .components-card .components-card__body small {
+  color: #666;
+  font-size: 0.85rem;
+}
+.wp-block-somira-scroll-video-sections .editor-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-style: italic;
+  color: #666;
+}
+.wp-block-somira-scroll-video-sections .editor-loading::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ddd;
+  border-top: 2px solid #007cba;
+  border-radius: 50%;
+  animation: editor-spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+@keyframes editor-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.wp-block-somira-scroll-video-sections .editor-error {
+  padding: 1rem;
+  background: #fee;
+  border: 1px solid #fcc;
+  border-radius: 4px;
+  color: #c33;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+.wp-block-somira-scroll-video-sections .editor-success {
+  padding: 1rem;
+  background: #efe;
+  border: 1px solid #cfc;
+  border-radius: 4px;
+  color: #363;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+}
+
+/*# sourceMappingURL=index.css.map*/

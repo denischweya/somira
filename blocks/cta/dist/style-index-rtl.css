@@ -1,1 +1,142 @@
-.wp-block-somira-cta{margin:2rem 0}.wp-block-somira-cta .cta-container{align-items:center;background:#f8f9fa;background-image:url(images/cta-bg.a10bd07f.png);background-repeat:no-repeat;border-radius:20px;display:flex;flex-direction:column;gap:2rem;height:700px;margin:0 auto;max-width:1440px;overflow:hidden}@media(max-width:768px){.wp-block-somira-cta .cta-container{flex-direction:column;text-align:center}}.wp-block-somira-cta .cta-container .cta-content{flex:1;text-align:center}.wp-block-somira-cta .cta-container .cta-content .cta-title{color:#fff;font-size:3rem;font-weight:800;line-height:1.2;margin:120px 0 1rem}.wp-block-somira-cta .cta-container .cta-content .cta-description{color:#fff;font-size:24px;line-height:1.4;margin:0 0 1.5rem;max-width:700px}.wp-block-somira-cta .cta-container .cta-content .cta-link{background:linear-gradient(var(--wp--preset--color--night,#282828),var(--wp--preset--color--night,#282828)) padding-box,conic-gradient(from var(--angle,0deg),transparent,#282828 10%,#fff5d9 40%,#282828 10%,rgba(40,40,40,.8) 30%) border-box;border:3px solid transparent;border-radius:8px;color:#fff;cursor:pointer;display:inline-block;font-size:24px;font-weight:700;max-width:387px;padding:16px 28px;position:relative;text-decoration:none;transition:all .3s ease;width:100%;z-index:1}.wp-block-somira-cta .cta-container .cta-content .cta-link:focus{outline:2px solid #fff5d9;outline-offset:2px}.wp-block-somira-cta .cta-container .cta-content .cta-link:before{background-color:hsla(0,0%,100%,.08);border-radius:inherit;content:"";inset:0;opacity:0;position:absolute;transition:opacity .3s ease;z-index:-1}.wp-block-somira-cta .cta-container .cta-content .cta-link :focus:before,.wp-block-somira-cta .cta-container .cta-content .cta-link:hover:before{opacity:1}.wp-block-somira-cta .cta-container .cta-content .lifetime-warranty{align-items:center;border-bottom:1px solid hsla(0,0%,100%,.5);display:flex;gap:8px;justify-content:center;margin:19px auto 0;max-width:250px;padding-bottom:8px}.wp-block-somira-cta .cta-container .cta-content .lifetime-warranty .warranty-text{color:#fff;font-size:16px;font-style:normal;font-weight:700}.wp-block-somira-cta .cta-container .cta-image{flex-shrink:0;max-width:100%}@media(max-width:768px){.wp-block-somira-cta .cta-container .cta-image{max-width:100%}}.wp-block-somira-cta .cta-container .cta-image img{border-radius:4px;height:auto;opacity:0;transform:translateX(-20px);transition:all .6s ease;width:100%}.wp-block-somira-cta .cta-container .cta-image img.is-loaded{opacity:1;transform:translateX(0)}.wp-block-somira-cta .cta-container .cta-image img.is-visible{animation:fadeInUp .6s ease forwards}@keyframes fadeInUp{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/cta/src/style.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Frontend styles for the CTA block.
+ */
+.wp-block-somira-cta {
+  margin: 2rem 0;
+}
+.wp-block-somira-cta .cta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  border-radius: 20px;
+  background: #f8f9fa;
+  max-width: 1440px;
+  background-image: url(images/cta-bg.a10bd07f.png);
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  height: 700px;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  .wp-block-somira-cta .cta-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+.wp-block-somira-cta .cta-container .cta-content {
+  flex: 1;
+  text-align: center;
+}
+.wp-block-somira-cta .cta-container .cta-content .cta-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  color: #fff;
+  margin-top: 120px;
+}
+.wp-block-somira-cta .cta-container .cta-content .cta-description {
+  font-size: 24px;
+  line-height: 1.4;
+  margin: 0 0 1.5rem 0;
+  color: #fff;
+  max-width: 700px;
+}
+.wp-block-somira-cta .cta-container .cta-content .cta-link {
+  display: inline-block;
+  color: white;
+  padding: 16px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 24px;
+  max-width: 387px;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--wp--preset--color--night, #282828), var(--wp--preset--color--night, #282828)) padding-box, conic-gradient(from var(--angle, 0deg), transparent, #282828 10%, #FFF5D9 40%, #282828 10%, rgba(40, 40, 40, 0.8) 30%) border-box;
+  /* overflow hidden not strictly needed here if content stays inside border */
+  transition: all 0.3s ease; /* transition both */
+}
+.wp-block-somira-cta .cta-container .cta-content .cta-link:focus {
+  outline: 2px solid #FFF5D9;
+  outline-offset: 2px;
+}
+.wp-block-somira-cta .cta-container .cta-content {
+  /* overlay layer */
+}
+.wp-block-somira-cta .cta-container .cta-content .cta-link::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* full cover */
+  background-color: rgba(255, 255, 255, 0.08); /* light overlay */
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1; /* stays under text, above gradient fill */
+}
+.wp-block-somira-cta .cta-container .cta-content {
+  /* on hover/focus, fade in overlay */
+}
+.wp-block-somira-cta .cta-container .cta-content .cta-link:hover::before,
+.wp-block-somira-cta .cta-container .cta-content .cta-link :focus::before {
+  opacity: 1;
+}
+.wp-block-somira-cta .cta-container .cta-content .lifetime-warranty {
+  max-width: 250px;
+  margin: 19px auto 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+.wp-block-somira-cta .cta-container .cta-content .lifetime-warranty .warranty-text {
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+}
+.wp-block-somira-cta .cta-container .cta-image {
+  flex-shrink: 0;
+  max-width: 100%;
+}
+@media (max-width: 768px) {
+  .wp-block-somira-cta .cta-container .cta-image {
+    max-width: 100%;
+  }
+}
+.wp-block-somira-cta .cta-container .cta-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.6s ease;
+}
+.wp-block-somira-cta .cta-container .cta-image img.is-loaded {
+  opacity: 1;
+  transform: translateX(0);
+}
+.wp-block-somira-cta .cta-container .cta-image img.is-visible {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

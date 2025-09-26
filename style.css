@@ -179,46 +179,8 @@ p,
 .expert-video video:not(.playing) {
     cursor: pointer;
 }
-.expert-video video:not(.playing)::-webkit-media-controls-panel {
-    display: none !important;
-}
-.expert-video video:not(.playing)::-webkit-media-controls {
-    display: none !important;
-}
 
-/* Custom play button */
-.expert-video .play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-.expert-video .play-button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translate(-50%, -50%) scale(1.1);
-}
-.expert-video .play-button::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 20px solid white;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    margin-left: 4px;
-}
-.expert-video.playing .play-button {
-    display: none;
-}
+
 .expert figure.wp-block-image.size-full.is-resized {
     border-radius: 8px;
     overflow: hidden;
@@ -269,8 +231,9 @@ p,
 	vertical-align: middle;
 }
 .data-driven {
-	border-radius: 20px;
+	border-radius: 40px;
 	position: relative;
+	background-size: 120% !important;
 }
 .data-driven:before {
 	content: "";

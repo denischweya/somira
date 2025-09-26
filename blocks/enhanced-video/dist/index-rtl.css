@@ -1,1 +1,156 @@
-.wp-block-somira-enhanced-video{background-color:#f8f9fa;border:2px dashed #ccc;border-radius:8px;max-width:100%;position:relative;width:100%}.wp-block-somira-enhanced-video .enhanced-video-preview{position:relative;width:100%}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview{background:#fff;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.1);overflow:hidden;position:relative;width:100%}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .thumbnail-preview{aspect-ratio:16/9;display:block;height:auto;-o-object-fit:cover;object-fit:cover;width:100%}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .play-button-preview{right:50%;pointer-events:none;position:absolute;top:50%;transform:translate(50%,-50%);z-index:2}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .play-icon-preview{filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));height:60px;-o-object-fit:contain;object-fit:contain;width:60px}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .default-play-icon-preview{filter:drop-shadow(0 4px 8px rgba(0,0,0,.3))}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .default-play-icon-preview svg{height:60px;width:60px}.wp-block-somira-enhanced-video video{border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.1);height:auto;width:100%}.wp-block-somira-enhanced-video .components-placeholder{min-height:200px}.wp-block-somira-enhanced-video .components-placeholder .components-placeholder__label{color:#1e1e1e;font-weight:600}.wp-block-somira-enhanced-video .components-placeholder .components-placeholder__instructions{color:#757575;margin-bottom:20px}.wp-block-somira-enhanced-video .components-placeholder .components-button.is-primary{background:#0073aa;border-color:#0073aa}.wp-block-somira-enhanced-video .components-placeholder .components-button.is-primary:hover{background:#005177;border-color:#005177}.block-editor-block-inspector .enhanced-video-media-preview img{border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.1);height:auto;margin-bottom:10px;max-width:100%}.block-editor-block-inspector .enhanced-video-media-preview .components-button{margin-left:10px}.block-editor-block-inspector .enhanced-video-media-preview .components-button.is-destructive{color:#cc1818}.block-editor-block-inspector .enhanced-video-media-preview .components-button.is-destructive:hover{color:#a02828}.block-editor-block-inspector .components-panel__body-title{font-weight:600}.block-editor-block-inspector .components-base-control__label{font-weight:500;margin-bottom:8px}.block-editor-block-inspector .components-toggle-control{margin-bottom:16px}.block-editor-block-inspector .components-toggle-control .components-toggle-control__label{font-weight:500}.block-editor-block-toolbar .components-toolbar-button[aria-label*="Replace video"] svg{color:#0073aa}@media(max-width:782px){.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .default-play-icon-preview svg,.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .play-icon-preview{height:50px;width:50px}.wp-block-somira-enhanced-video .components-placeholder{min-height:150px;padding:20px}.wp-block-somira-enhanced-video .components-placeholder .components-placeholder__label{font-size:16px}.wp-block-somira-enhanced-video .components-placeholder .components-placeholder__instructions{font-size:14px}.block-editor-block-inspector .enhanced-video-media-preview .components-button{display:block;margin-bottom:10px;margin-left:0;width:100%}}@media(prefers-color-scheme:dark){.wp-block-somira-enhanced-video{background-color:#1e1e1e;border-color:#3c434a}.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview,.wp-block-somira-enhanced-video video{box-shadow:0 2px 8px rgba(0,0,0,.3)}}.wp-block-somira-enhanced-video:focus-within{border-color:#0073aa;box-shadow:0 0 0 2px rgba(0,115,170,.2)}
+/*!**************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/enhanced-video/src/editor.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * Enhanced Video Block Editor Styles
+ * Applied only in the block editor.
+ */
+.wp-block-somira-enhanced-video {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+.wp-block-somira-enhanced-video .enhanced-video-preview {
+  position: relative;
+  width: 100%;
+}
+.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview {
+  position: relative;
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .thumbnail-preview {
+  width: 100%;
+  height: auto;
+  display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 16/9;
+}
+.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .play-button-preview {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .play-icon-preview {
+  width: 60px;
+  height: 60px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .default-play-icon-preview {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+.wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .default-play-icon-preview svg {
+  width: 60px;
+  height: 60px;
+}
+.wp-block-somira-enhanced-video video {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.wp-block-somira-enhanced-video .components-placeholder {
+  min-height: 200px;
+}
+.wp-block-somira-enhanced-video .components-placeholder .components-placeholder__label {
+  font-weight: 600;
+  color: #1e1e1e;
+}
+.wp-block-somira-enhanced-video .components-placeholder .components-placeholder__instructions {
+  color: #757575;
+  margin-bottom: 20px;
+}
+.wp-block-somira-enhanced-video .components-placeholder .components-button.is-primary {
+  background: #0073aa;
+  border-color: #0073aa;
+}
+.wp-block-somira-enhanced-video .components-placeholder .components-button.is-primary:hover {
+  background: #005177;
+  border-color: #005177;
+}
+
+.block-editor-block-inspector .enhanced-video-media-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+.block-editor-block-inspector .enhanced-video-media-preview .components-button {
+  margin-left: 10px;
+}
+.block-editor-block-inspector .enhanced-video-media-preview .components-button.is-destructive {
+  color: #cc1818;
+}
+.block-editor-block-inspector .enhanced-video-media-preview .components-button.is-destructive:hover {
+  color: #a02828;
+}
+.block-editor-block-inspector .components-panel__body-title {
+  font-weight: 600;
+}
+.block-editor-block-inspector .components-base-control__label {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.block-editor-block-inspector .components-toggle-control {
+  margin-bottom: 16px;
+}
+.block-editor-block-inspector .components-toggle-control .components-toggle-control__label {
+  font-weight: 500;
+}
+
+.block-editor-block-toolbar .components-toolbar-button[aria-label*="Replace video"] svg {
+  color: #0073aa;
+}
+
+@media (max-width: 782px) {
+  .wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .play-icon-preview,
+  .wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview .default-play-icon-preview svg {
+    width: 50px;
+    height: 50px;
+  }
+  .wp-block-somira-enhanced-video .components-placeholder {
+    min-height: 150px;
+    padding: 20px;
+  }
+  .wp-block-somira-enhanced-video .components-placeholder .components-placeholder__label {
+    font-size: 16px;
+  }
+  .wp-block-somira-enhanced-video .components-placeholder .components-placeholder__instructions {
+    font-size: 14px;
+  }
+  .block-editor-block-inspector .enhanced-video-media-preview .components-button {
+    margin-bottom: 10px;
+    margin-left: 0;
+    display: block;
+    width: 100%;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .wp-block-somira-enhanced-video {
+    border-color: #3c434a;
+    background-color: #1e1e1e;
+  }
+  .wp-block-somira-enhanced-video .enhanced-video-thumbnail-preview {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  .wp-block-somira-enhanced-video video {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+.wp-block-somira-enhanced-video:focus-within {
+  border-color: #0073aa;
+  box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.2);
+}
