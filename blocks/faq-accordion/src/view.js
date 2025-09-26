@@ -15,13 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			const toggleIcon = button.querySelector('.faq-toggle-icon');
 			const iconType = toggleIcon.getAttribute('data-icon-type');
 			
-			// Set initial ARIA attributes
-			button.setAttribute('aria-expanded', 'false');
-			content.setAttribute('hidden', '');
-			content.setAttribute('aria-hidden', 'true');
+			// Set initial ARIA attributes - first item should be open
+			const isFirstItem = index === 0;
+			button.setAttribute('aria-expanded', isFirstItem ? 'true' : 'false');
+			
+			if (isFirstItem) {
+				content.removeAttribute('hidden');
+				content.setAttribute('aria-hidden', 'false');
+				faqItem.classList.add('active');
+			} else {
+				content.setAttribute('hidden', '');
+				content.setAttribute('aria-hidden', 'true');
+			}
 			
 			// Set initial icon state
-			updateToggleIcon(button, false, iconType);
+			updateToggleIcon(button, isFirstItem, iconType);
 			
 			// Handle click events
 			button.addEventListener('click', function(e) {

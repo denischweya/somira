@@ -116,8 +116,8 @@ if (! function_exists('somira_enqueue_flickity_assets')) :
      */
     function somira_enqueue_flickity_assets()
     {
-        // Only enqueue on pages that contain our carousel block
-        if (has_block('somira/carousel')) {
+        // Enqueue on pages that contain carousel or scroll-video-sections blocks
+        if (has_block('somira/carousel') || has_block('somira/scroll-video-sections')) {
             wp_enqueue_style(
                 'flickity-css',
                 get_template_directory_uri() . '/blocks/carousel/flickity.css',
